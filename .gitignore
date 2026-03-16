@@ -4,7 +4,6 @@ __pycache__/
 .env
 .venv/
 venv/
-# DB は commit する（GitHub Actions で更新）
-# data/mabuispa.db はトラック対象
-data/dashboard_data.json
+
+# ビルド中間ファイル（docs/index.html と data/ は Actions からコミットするため除外しない）
 dashboards/dashboard.html
