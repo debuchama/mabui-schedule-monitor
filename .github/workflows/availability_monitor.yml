@@ -1,0 +1,39 @@
+name: Availability Monitor (30min)
+
+on:
+  schedule:
+    # JST 12:00〜翌5:00 の 30 分ごと = UTC 3:00〜20:00
+    - cron: '0,30 3-20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install httpx beautifulsoup4
+
+      - name: Initialize DB (冪等)
+        run: python scripts/db_setup.py
+
+      - name: Snapshot today's availability
+        run: python scripts/daily_monitor.py
+
+      - name: Commit DB
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/mabuispa.db
+          git diff --staged --quiet || git commit -m "monitor: snapshot $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push

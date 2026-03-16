@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MABUI Tokyo — Schedule Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+/* ── Reset / Base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0f;
+  --surface:#16161a;
+  --surface2:#1e1e24;
+  --border:#2a2a35;
+  --text:#e8e8f0;
+  --muted:#7a7a90;
+  --gold:#c9a84c;
+  --gold-light:#e8c97a;
+  --akabane:#e05555;   /* 赤羽ルーム */
+  --warabi:#5599e0;    /* 蕨ルーム   */
+  --available:#4caf80;
+  --booked:#e05555;
+  --radius:10px;
+}
+html{background:var(--bg);color:var(--text);font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:14px}
+body{min-height:100vh;padding-bottom:40px}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:var(--gold-light);text-decoration:underline dotted}
+
+/* ── Layout ── */
+.page-header{
+  background:linear-gradient(135deg,#0d0d0f 0%,#1a1510 100%);
+  border-bottom:1px solid var(--border);
+  padding:20px 24px;
+  display:flex;align-items:center;gap:16px;
+}
+.page-header h1{font-size:1.3rem;font-weight:700;color:var(--gold);letter-spacing:.05em}
+.page-header .subtitle{font-size:.8rem;color:var(--muted);margin-top:2px}
+.page-header .badge{
+  margin-left:auto;font-size:.7rem;color:var(--muted);
+  background:var(--surface2);padding:4px 10px;border-radius:20px;
+  border:1px solid var(--border);
+}
+
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* ── Tabs ── */
+.tabs{
+  display:flex;gap:4px;padding:16px 16px 0;
+  border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;
+  background:var(--bg);
+}
+.tab-btn{
+  padding:8px 18px;border-radius:var(--radius) var(--radius) 0 0;
+  border:1px solid transparent;border-bottom:none;
+  background:transparent;color:var(--muted);cursor:pointer;
+  font:inherit;font-size:.85rem;transition:.2s;
+}
+.tab-btn:hover{color:var(--text);background:var(--surface)}
+.tab-btn.active{background:var(--surface);color:var(--gold);border-color:var(--border)}
+.tab-panel{display:none;padding:20px 0}
+.tab-panel.active{display:block}
+
+/* ── Favorite Banner ── */
+.fav-banner{
+  background:linear-gradient(90deg,#1a160a,var(--surface2));
+  border:1px solid #3a2e10;border-radius:var(--radius);
+  padding:12px 18px;margin-bottom:20px;
+}
+.fav-banner h3{font-size:.75rem;color:var(--gold);letter-spacing:.1em;margin-bottom:8px}
+.fav-cards{display:flex;flex-wrap:wrap;gap:8px}
+.fav-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:6px 12px;display:flex;align-items:center;gap:10px;font-size:.82rem;
+}
+.fav-today-badge{
+  background:var(--gold);color:#000;font-size:.65rem;font-weight:700;
+  padding:1px 6px;border-radius:4px;
+}
+.fav-empty{color:var(--muted);font-size:.82rem}
+
+/* ── Metrics ── */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px}
+.metric-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 16px;text-align:center;
+}
+.metric-card .val{font-size:2rem;font-weight:700;color:var(--gold)}
+.metric-card .lbl{font-size:.72rem;color:var(--muted);margin-top:2px}
+
+/* ── Section heading ── */
+.section-title{
+  font-size:.75rem;font-weight:700;letter-spacing:.12em;
+  color:var(--muted);text-transform:uppercase;margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── Room cards (Today tab) ── */
+.room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px}
+.room-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.room-card-header{
+  padding:10px 14px;font-size:.8rem;font-weight:700;letter-spacing:.06em;
+  display:flex;align-items:center;gap:8px;
+}
+.room-card-header.akabane{background:rgba(224,85,85,.12);border-bottom:2px solid var(--akabane);color:var(--akabane)}
+.room-card-header.warabi {background:rgba(85,153,224,.12);border-bottom:2px solid var(--warabi) ;color:var(--warabi) }
+.room-card-body{padding:10px 14px}
+.staff-row{
+  display:flex;align-items:center;gap:8px;
+  padding:5px 0;border-bottom:1px solid var(--border);font-size:.82rem;
+}
+.staff-row:last-child{border-bottom:none}
+.status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.status-dot.available{background:var(--available)}
+.status-dot.booked   {background:var(--booked)}
+.staff-name{flex:1}
+.staff-time{color:var(--muted);font-size:.78rem;white-space:nowrap}
+.booked-label{color:var(--booked);font-size:.72rem;font-weight:500}
+
+/* ── Gantt ── */
+.gantt-wrap{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;margin-bottom:24px;overflow-x:auto;
+}
+.gantt-canvas-wrap{position:relative}
+#ganttChart{min-width:800px}
+
+/* ── Charts ── */
+.chart-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin-bottom:24px}
+.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px}
+.chart-card h4{font-size:.78rem;color:var(--muted);margin-bottom:12px;font-weight:500}
+
+/* ── Heatmap ── */
+.heatmap-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.heatmap-table th,.heatmap-table td{
+  padding:5px 10px;text-align:center;border:1px solid var(--border)
+}
+.heatmap-table th{background:var(--surface2);color:var(--muted);font-weight:500}
+.heatmap-0{background:var(--surface)}
+.heatmap-1{background:rgba(201,168,76,.15);color:var(--gold)}
+.heatmap-2{background:rgba(201,168,76,.30);color:var(--gold-light)}
+.heatmap-3{background:rgba(201,168,76,.50);color:var(--gold-light);font-weight:600}
+.heatmap-4{background:rgba(201,168,76,.75);color:#fff;font-weight:700}
+
+/* ── Popularity ranking ── */
+.rank-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:24px}
+.rank-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px}
+.rank-card .rank-num{font-size:.7rem;color:var(--muted);margin-bottom:4px}
+.rank-card .rank-name a{font-size:.95rem;font-weight:600;color:var(--text)}
+.rank-card .rank-speed{
+  display:inline-block;margin-top:6px;font-size:.72rem;font-weight:700;
+  padding:2px 8px;border-radius:4px;
+}
+.speed-lightning{background:rgba(224,85,85,.2);color:var(--booked)}
+.speed-moderate {background:rgba(234,179,8,.2) ;color:#eab308}
+.speed-gradual  {background:rgba(76,175,128,.2);color:var(--available)}
+.rank-bar-bg{background:var(--surface2);border-radius:4px;height:4px;margin-top:8px}
+.rank-bar{background:var(--gold);height:4px;border-radius:4px}
+
+/* ── Stats table ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.data-table th,.data-table td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.data-table th{background:var(--surface2);color:var(--muted);font-weight:500;white-space:nowrap}
+.data-table tr:hover td{background:var(--surface2)}
+
+/* ── Monitor Log ── */
+.snapshot-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-bottom:20px}
+.snapshot-table th,.snapshot-table td{padding:6px 10px;border-bottom:1px solid var(--border);text-align:left}
+.snapshot-table th{background:var(--surface2);color:var(--muted)}
+.status-available{color:var(--available)}
+.status-booked   {color:var(--booked)}
+.success-ok {color:var(--available)}
+.success-ng {color:var(--booked)}
+
+/* ── Misc ── */
+.no-data{color:var(--muted);font-size:.82rem;padding:20px;text-align:center}
+.location-pill{
+  display:inline-block;padding:1px 7px;border-radius:4px;font-size:.7rem;font-weight:600;
+}
+.loc-akabane{background:rgba(224,85,85,.15);color:var(--akabane)}
+.loc-warabi {background:rgba(85,153,224,.15);color:var(--warabi)}
+
+@media(max-width:600px){
+  .tabs{overflow-x:auto;flex-wrap:nowrap}
+  .tab-btn{white-space:nowrap;font-size:.78rem;padding:6px 12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Page Header ── -->
+<div class="page-header">
+  <div>
+    <h1>🌺 MABUI Tokyo — Schedule Monitor</h1>
+    <div class="subtitle">赤羽ルーム・蕨ルーム 出勤スケジュール可視化</div>
+  </div>
+  <div class="badge" id="genAt">---</div>
+</div>
+
+<!-- ── Tabs ── -->
+<div class="tabs container">
+  <button class="tab-btn active" onclick="switchTab('today')">Today</button>
+  <button class="tab-btn" onclick="switchTab('weekly')">Weekly</button>
+  <button class="tab-btn" onclick="switchTab('stats')">Staff Stats</button>
+  <button class="tab-btn" onclick="switchTab('log')">Monitor Log</button>
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- TODAY                                                    -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div id="tab-today" class="tab-panel active container">
+
+  <!-- Favorites Banner -->
+  <div class="fav-banner" id="favBanner" style="display:none">
+    <h3>⭐ お気に入りスタッフ 今週の出勤</h3>
+    <div class="fav-cards" id="favCards"></div>
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics" id="metrics"></div>
+
+  <!-- Room cards -->
+  <div class="section-title">今日の出勤スタッフ</div>
+  <div class="room-grid" id="roomGrid"></div>
+
+  <!-- Gantt -->
+  <div class="section-title">タイムライン (Gantt)</div>
+  <div class="gantt-wrap">
+    <div class="gantt-canvas-wrap">
+      <canvas id="ganttChart"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- WEEKLY                                                   -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div id="tab-weekly" class="tab-panel container">
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h4>週間スタッフ数（店舗別）</h4>
+      <canvas id="weeklyBarChart" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <h4>昼夜シフトバランス</h4>
+      <canvas id="shiftChart" height="200"></canvas>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:8px">ヒートマップ（店舗×日）</div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:24px;overflow-x:auto">
+    <table class="heatmap-table" id="heatmapTable"></table>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- STAFF STATS                                              -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div id="tab-stats" class="tab-panel container">
+
+  <div class="section-title">人気度ランキング（予約埋まり速度）</div>
+  <div id="rankGrid" class="rank-grid"></div>
+
+  <div class="section-title">出勤頻度（直近30日）</div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:24px">
+    <canvas id="freqChart" height="220"></canvas>
+  </div>
+
+  <div class="section-title">スタッフ詳細テーブル</div>
+  <div style="overflow-x:auto;margin-bottom:24px">
+    <table class="data-table" id="statsTable">
+      <thead><tr>
+        <th>名前</th><th>シフト数</th><th>平均時間</th><th>主な店舗</th><th>人気度</th>
+      </tr></thead>
+      <tbody id="statsTableBody"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!-- MONITOR LOG                                              -->
+<!-- ════════════════════════════════════════════════════════ -->
+<div id="tab-log" class="tab-panel container">
+
+  <div class="section-title">当日スナップショット履歴</div>
+  <div style="overflow-x:auto;margin-bottom:24px">
+    <table class="snapshot-table" id="snapshotTable">
+      <thead><tr><th>時刻</th><th>名前</th><th>店舗</th><th>状態</th><th>シフト</th></tr></thead>
+      <tbody id="snapshotBody"></tbody>
+    </table>
+  </div>
+
+  <div class="section-title">スクレイプ実行ログ（直近20件）</div>
+  <div style="overflow-x:auto">
+    <table class="data-table" id="logTable">
+      <thead><tr><th>実行日時</th><th>タスク</th><th>対象日</th><th>件数</th><th>結果</th></tr></thead>
+      <tbody id="logBody"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ═══════════════════ SCRIPT ═══════════════════ -->
+<script>
+// ── データ注入 ─────────────────────────────────────────────────────────────
+const DATA = {
+  "generated_at": "2026-03-16T01:32:28.047008",
+  "today": "2026-03-16",
+  "week_dates": [
+    "2026-03-16",
+    "2026-03-17",
+    "2026-03-18",
+    "2026-03-19",
+    "2026-03-20",
+    "2026-03-21",
+    "2026-03-22"
+  ],
+  "therapists": [
+    {
+      "therapist_id": 169,
+      "name": "五野上",
+      "age": 36,
+      "height_cm": 150,
+      "cup_size": "C",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 165,
+      "name": "優木",
+      "age": 38,
+      "height_cm": 160,
+      "cup_size": "E",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 193,
+      "name": "冬月",
+      "age": 41,
+      "height_cm": 153,
+      "cup_size": "C",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 158,
+      "name": "愛咲",
+      "age": 40,
+      "height_cm": 152,
+      "cup_size": "I",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 63,
+      "name": "愛沢",
+      "age": 38,
+      "height_cm": 163,
+      "cup_size": "F",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 78,
+      "name": "春名",
+      "age": 35,
+      "height_cm": 166,
+      "cup_size": "F",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 7,
+      "name": "月野",
+      "age": 37,
+      "height_cm": 157,
+      "cup_size": "F",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 5,
+      "name": "梅澤",
+      "age": 30,
+      "height_cm": 164,
+      "cup_size": "F",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 180,
+      "name": "橘",
+      "age": 40,
+      "height_cm": 158,
+      "cup_size": "D",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 48,
+      "name": "水原",
+      "age": 38,
+      "height_cm": 174,
+      "cup_size": "G",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 46,
+      "name": "西島",
+      "age": 34,
+      "height_cm": 162,
+      "cup_size": "E",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    },
+    {
+      "therapist_id": 4,
+      "name": "高橋",
+      "age": 30,
+      "height_cm": 163,
+      "cup_size": "F",
+      "first_seen": "2026-03-16 10:32:06",
+      "last_seen": "2026-03-16 10:32:06",
+      "is_active": 1
+    }
+  ],
+  "weekly_schedules": [
+    {
+      "id": 1,
+      "therapist_id": 169,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "五野上",
+      "age": 36,
+      "height_cm": 150,
+      "cup_size": "C"
+    },
+    {
+      "id": 2,
+      "therapist_id": 193,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "21:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "冬月",
+      "age": 41,
+      "height_cm": 153,
+      "cup_size": "C"
+    },
+    {
+      "id": 3,
+      "therapist_id": 78,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "春名",
+      "age": 35,
+      "height_cm": 166,
+      "cup_size": "F"
+    },
+    {
+      "id": 4,
+      "therapist_id": 4,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "高橋",
+      "age": 30,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 5,
+      "therapist_id": 7,
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "月野",
+      "age": 37,
+      "height_cm": 157,
+      "cup_size": "F"
+    },
+    {
+      "id": 6,
+      "therapist_id": 63,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛沢",
+      "age": 38,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 7,
+      "therapist_id": 5,
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "梅澤",
+      "age": 30,
+      "height_cm": 164,
+      "cup_size": "F"
+    },
+    {
+      "id": 8,
+      "therapist_id": 180,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "橘",
+      "age": 40,
+      "height_cm": 158,
+      "cup_size": "D"
+    },
+    {
+      "id": 9,
+      "therapist_id": 165,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "優木",
+      "age": 38,
+      "height_cm": 160,
+      "cup_size": "E"
+    },
+    {
+      "id": 10,
+      "therapist_id": 158,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛咲",
+      "age": 40,
+      "height_cm": 152,
+      "cup_size": "I"
+    },
+    {
+      "id": 11,
+      "therapist_id": 46,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "西島",
+      "age": 34,
+      "height_cm": 162,
+      "cup_size": "E"
+    },
+    {
+      "id": 12,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原",
+      "age": 38,
+      "height_cm": 174,
+      "cup_size": "G"
+    },
+    {
+      "id": 13,
+      "therapist_id": 169,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "五野上",
+      "age": 36,
+      "height_cm": 150,
+      "cup_size": "C"
+    },
+    {
+      "id": 14,
+      "therapist_id": 193,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "21:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "冬月",
+      "age": 41,
+      "height_cm": 153,
+      "cup_size": "C"
+    },
+    {
+      "id": 15,
+      "therapist_id": 78,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "春名",
+      "age": 35,
+      "height_cm": 166,
+      "cup_size": "F"
+    },
+    {
+      "id": 16,
+      "therapist_id": 4,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "高橋",
+      "age": 30,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 17,
+      "therapist_id": 7,
+      "schedule_date": "2026-03-17",
+      "location": "蕨ルーム",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "月野",
+      "age": 37,
+      "height_cm": 157,
+      "cup_size": "F"
+    },
+    {
+      "id": 18,
+      "therapist_id": 63,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛沢",
+      "age": 38,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 19,
+      "therapist_id": 5,
+      "schedule_date": "2026-03-17",
+      "location": "蕨ルーム",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "梅澤",
+      "age": 30,
+      "height_cm": 164,
+      "cup_size": "F"
+    },
+    {
+      "id": 20,
+      "therapist_id": 180,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "橘",
+      "age": 40,
+      "height_cm": 158,
+      "cup_size": "D"
+    },
+    {
+      "id": 21,
+      "therapist_id": 165,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "優木",
+      "age": 38,
+      "height_cm": 160,
+      "cup_size": "E"
+    },
+    {
+      "id": 22,
+      "therapist_id": 158,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛咲",
+      "age": 40,
+      "height_cm": 152,
+      "cup_size": "I"
+    },
+    {
+      "id": 23,
+      "therapist_id": 46,
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "西島",
+      "age": 34,
+      "height_cm": 162,
+      "cup_size": "E"
+    },
+    {
+      "id": 24,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-17",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原",
+      "age": 38,
+      "height_cm": 174,
+      "cup_size": "G"
+    },
+    {
+      "id": 25,
+      "therapist_id": 169,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "五野上",
+      "age": 36,
+      "height_cm": 150,
+      "cup_size": "C"
+    },
+    {
+      "id": 26,
+      "therapist_id": 193,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "21:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "冬月",
+      "age": 41,
+      "height_cm": 153,
+      "cup_size": "C"
+    },
+    {
+      "id": 27,
+      "therapist_id": 78,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "春名",
+      "age": 35,
+      "height_cm": 166,
+      "cup_size": "F"
+    },
+    {
+      "id": 28,
+      "therapist_id": 4,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "高橋",
+      "age": 30,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 29,
+      "therapist_id": 7,
+      "schedule_date": "2026-03-18",
+      "location": "蕨ルーム",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "月野",
+      "age": 37,
+      "height_cm": 157,
+      "cup_size": "F"
+    },
+    {
+      "id": 30,
+      "therapist_id": 63,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛沢",
+      "age": 38,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 31,
+      "therapist_id": 5,
+      "schedule_date": "2026-03-18",
+      "location": "蕨ルーム",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "梅澤",
+      "age": 30,
+      "height_cm": 164,
+      "cup_size": "F"
+    },
+    {
+      "id": 32,
+      "therapist_id": 180,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "橘",
+      "age": 40,
+      "height_cm": 158,
+      "cup_size": "D"
+    },
+    {
+      "id": 33,
+      "therapist_id": 165,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "優木",
+      "age": 38,
+      "height_cm": 160,
+      "cup_size": "E"
+    },
+    {
+      "id": 34,
+      "therapist_id": 158,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛咲",
+      "age": 40,
+      "height_cm": 152,
+      "cup_size": "I"
+    },
+    {
+      "id": 35,
+      "therapist_id": 46,
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "西島",
+      "age": 34,
+      "height_cm": 162,
+      "cup_size": "E"
+    },
+    {
+      "id": 36,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-18",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原",
+      "age": 38,
+      "height_cm": 174,
+      "cup_size": "G"
+    },
+    {
+      "id": 37,
+      "therapist_id": 169,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "五野上",
+      "age": 36,
+      "height_cm": 150,
+      "cup_size": "C"
+    },
+    {
+      "id": 38,
+      "therapist_id": 193,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "21:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "冬月",
+      "age": 41,
+      "height_cm": 153,
+      "cup_size": "C"
+    },
+    {
+      "id": 39,
+      "therapist_id": 78,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "春名",
+      "age": 35,
+      "height_cm": 166,
+      "cup_size": "F"
+    },
+    {
+      "id": 40,
+      "therapist_id": 4,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "高橋",
+      "age": 30,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 41,
+      "therapist_id": 7,
+      "schedule_date": "2026-03-19",
+      "location": "蕨ルーム",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "月野",
+      "age": 37,
+      "height_cm": 157,
+      "cup_size": "F"
+    },
+    {
+      "id": 42,
+      "therapist_id": 63,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛沢",
+      "age": 38,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 43,
+      "therapist_id": 5,
+      "schedule_date": "2026-03-19",
+      "location": "蕨ルーム",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "梅澤",
+      "age": 30,
+      "height_cm": 164,
+      "cup_size": "F"
+    },
+    {
+      "id": 44,
+      "therapist_id": 180,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "橘",
+      "age": 40,
+      "height_cm": 158,
+      "cup_size": "D"
+    },
+    {
+      "id": 45,
+      "therapist_id": 165,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "優木",
+      "age": 38,
+      "height_cm": 160,
+      "cup_size": "E"
+    },
+    {
+      "id": 46,
+      "therapist_id": 158,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛咲",
+      "age": 40,
+      "height_cm": 152,
+      "cup_size": "I"
+    },
+    {
+      "id": 47,
+      "therapist_id": 46,
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "西島",
+      "age": 34,
+      "height_cm": 162,
+      "cup_size": "E"
+    },
+    {
+      "id": 48,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-19",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原",
+      "age": 38,
+      "height_cm": 174,
+      "cup_size": "G"
+    },
+    {
+      "id": 49,
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "五野上",
+      "age": 36,
+      "height_cm": 150,
+      "cup_size": "C"
+    },
+    {
+      "id": 50,
+      "therapist_id": 193,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "21:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "冬月",
+      "age": 41,
+      "height_cm": 153,
+      "cup_size": "C"
+    },
+    {
+      "id": 51,
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "春名",
+      "age": 35,
+      "height_cm": 166,
+      "cup_size": "F"
+    },
+    {
+      "id": 52,
+      "therapist_id": 4,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "高橋",
+      "age": 30,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 53,
+      "therapist_id": 7,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "月野",
+      "age": 37,
+      "height_cm": 157,
+      "cup_size": "F"
+    },
+    {
+      "id": 54,
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛沢",
+      "age": 38,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 55,
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "梅澤",
+      "age": 30,
+      "height_cm": 164,
+      "cup_size": "F"
+    },
+    {
+      "id": 56,
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "橘",
+      "age": 40,
+      "height_cm": 158,
+      "cup_size": "D"
+    },
+    {
+      "id": 57,
+      "therapist_id": 165,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "優木",
+      "age": 38,
+      "height_cm": 160,
+      "cup_size": "E"
+    },
+    {
+      "id": 58,
+      "therapist_id": 158,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛咲",
+      "age": 40,
+      "height_cm": 152,
+      "cup_size": "I"
+    },
+    {
+      "id": 59,
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "西島",
+      "age": 34,
+      "height_cm": 162,
+      "cup_size": "E"
+    },
+    {
+      "id": 60,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原",
+      "age": 38,
+      "height_cm": 174,
+      "cup_size": "G"
+    },
+    {
+      "id": 61,
+      "therapist_id": 169,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "五野上",
+      "age": 36,
+      "height_cm": 150,
+      "cup_size": "C"
+    },
+    {
+      "id": 62,
+      "therapist_id": 193,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "21:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "冬月",
+      "age": 41,
+      "height_cm": 153,
+      "cup_size": "C"
+    },
+    {
+      "id": 63,
+      "therapist_id": 78,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "春名",
+      "age": 35,
+      "height_cm": 166,
+      "cup_size": "F"
+    },
+    {
+      "id": 64,
+      "therapist_id": 4,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "高橋",
+      "age": 30,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 65,
+      "therapist_id": 7,
+      "schedule_date": "2026-03-21",
+      "location": "蕨ルーム",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "月野",
+      "age": 37,
+      "height_cm": 157,
+      "cup_size": "F"
+    },
+    {
+      "id": 66,
+      "therapist_id": 63,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛沢",
+      "age": 38,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 67,
+      "therapist_id": 5,
+      "schedule_date": "2026-03-21",
+      "location": "蕨ルーム",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "梅澤",
+      "age": 30,
+      "height_cm": 164,
+      "cup_size": "F"
+    },
+    {
+      "id": 68,
+      "therapist_id": 180,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "橘",
+      "age": 40,
+      "height_cm": 158,
+      "cup_size": "D"
+    },
+    {
+      "id": 69,
+      "therapist_id": 165,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "優木",
+      "age": 38,
+      "height_cm": 160,
+      "cup_size": "E"
+    },
+    {
+      "id": 70,
+      "therapist_id": 158,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛咲",
+      "age": 40,
+      "height_cm": 152,
+      "cup_size": "I"
+    },
+    {
+      "id": 71,
+      "therapist_id": 46,
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "西島",
+      "age": 34,
+      "height_cm": 162,
+      "cup_size": "E"
+    },
+    {
+      "id": 72,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-21",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原",
+      "age": 38,
+      "height_cm": 174,
+      "cup_size": "G"
+    },
+    {
+      "id": 73,
+      "therapist_id": 169,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "五野上",
+      "age": 36,
+      "height_cm": 150,
+      "cup_size": "C"
+    },
+    {
+      "id": 74,
+      "therapist_id": 193,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": "10:00",
+      "end_time": "21:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "冬月",
+      "age": 41,
+      "height_cm": 153,
+      "cup_size": "C"
+    },
+    {
+      "id": 75,
+      "therapist_id": 78,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "春名",
+      "age": 35,
+      "height_cm": 166,
+      "cup_size": "F"
+    },
+    {
+      "id": 76,
+      "therapist_id": 4,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "高橋",
+      "age": 30,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 77,
+      "therapist_id": 7,
+      "schedule_date": "2026-03-22",
+      "location": "蕨ルーム",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "月野",
+      "age": 37,
+      "height_cm": 157,
+      "cup_size": "F"
+    },
+    {
+      "id": 78,
+      "therapist_id": 63,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛沢",
+      "age": 38,
+      "height_cm": 163,
+      "cup_size": "F"
+    },
+    {
+      "id": 79,
+      "therapist_id": 5,
+      "schedule_date": "2026-03-22",
+      "location": "蕨ルーム",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "梅澤",
+      "age": 30,
+      "height_cm": 164,
+      "cup_size": "F"
+    },
+    {
+      "id": 80,
+      "therapist_id": 180,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "橘",
+      "age": 40,
+      "height_cm": 158,
+      "cup_size": "D"
+    },
+    {
+      "id": 81,
+      "therapist_id": 165,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "is_fully_booked": 0,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "優木",
+      "age": 38,
+      "height_cm": 160,
+      "cup_size": "E"
+    },
+    {
+      "id": 82,
+      "therapist_id": 158,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "愛咲",
+      "age": 40,
+      "height_cm": 152,
+      "cup_size": "I"
+    },
+    {
+      "id": 83,
+      "therapist_id": 46,
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "西島",
+      "age": 34,
+      "height_cm": 162,
+      "cup_size": "E"
+    },
+    {
+      "id": 84,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-22",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原",
+      "age": 38,
+      "height_cm": 174,
+      "cup_size": "G"
+    }
+  ],
+  "daily_location_summary": [
+    {
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "staff_count": 3,
+      "booked_count": 1
+    },
+    {
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "staff_count": 9,
+      "booked_count": 2
+    },
+    {
+      "schedule_date": "2026-03-17",
+      "location": "蕨ルーム",
+      "staff_count": 3,
+      "booked_count": 1
+    },
+    {
+      "schedule_date": "2026-03-17",
+      "location": "赤羽ルーム",
+      "staff_count": 9,
+      "booked_count": 2
+    },
+    {
+      "schedule_date": "2026-03-18",
+      "location": "蕨ルーム",
+      "staff_count": 3,
+      "booked_count": 1
+    },
+    {
+      "schedule_date": "2026-03-18",
+      "location": "赤羽ルーム",
+      "staff_count": 9,
+      "booked_count": 2
+    },
+    {
+      "schedule_date": "2026-03-19",
+      "location": "蕨ルーム",
+      "staff_count": 3,
+      "booked_count": 1
+    },
+    {
+      "schedule_date": "2026-03-19",
+      "location": "赤羽ルーム",
+      "staff_count": 9,
+      "booked_count": 2
+    },
+    {
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "staff_count": 3,
+      "booked_count": 1
+    },
+    {
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "staff_count": 9,
+      "booked_count": 2
+    },
+    {
+      "schedule_date": "2026-03-21",
+      "location": "蕨ルーム",
+      "staff_count": 3,
+      "booked_count": 1
+    },
+    {
+      "schedule_date": "2026-03-21",
+      "location": "赤羽ルーム",
+      "staff_count": 9,
+      "booked_count": 2
+    },
+    {
+      "schedule_date": "2026-03-22",
+      "location": "蕨ルーム",
+      "staff_count": 3,
+      "booked_count": 1
+    },
+    {
+      "schedule_date": "2026-03-22",
+      "location": "赤羽ルーム",
+      "staff_count": 9,
+      "booked_count": 2
+    }
+  ],
+  "therapist_stats": [
+    {
+      "therapist_id": 193,
+      "name": "冬月",
+      "shift_count": 7,
+      "avg_hours": 11.0,
+      "locations": "赤羽ルーム"
+    },
+    {
+      "therapist_id": 180,
+      "name": "橘",
+      "shift_count": 7,
+      "avg_hours": 6.5,
+      "locations": "赤羽ルーム"
+    },
+    {
+      "therapist_id": 169,
+      "name": "五野上",
+      "shift_count": 7,
+      "avg_hours": 7.0,
+      "locations": "赤羽ルーム"
+    },
+    {
+      "therapist_id": 165,
+      "name": "優木",
+      "shift_count": 7,
+      "avg_hours": 4.0,
+      "locations": "赤羽ルーム"
+    },
+    {
+      "therapist_id": 158,
+      "name": "愛咲",
+      "shift_count": 7,
+      "avg_hours": null,
+      "locations": "赤羽ルーム"
+    },
+    {
+      "therapist_id": 78,
+      "name": "春名",
+      "shift_count": 7,
+      "avg_hours": 7.0,
+      "locations": "赤羽ルーム"
+    },
+    {
+      "therapist_id": 63,
+      "name": "愛沢",
+      "shift_count": 7,
+      "avg_hours": 5.5,
+      "locations": "赤羽ルーム"
+    },
+    {
+      "therapist_id": 48,
+      "name": "水原",
+      "shift_count": 7,
+      "avg_hours": null,
+      "locations": "蕨ルーム"
+    },
+    {
+      "therapist_id": 46,
+      "name": "西島",
+      "shift_count": 7,
+      "avg_hours": null,
+      "locations": "赤羽ルーム"
+    },
+    {
+      "therapist_id": 7,
+      "name": "月野",
+      "shift_count": 7,
+      "avg_hours": 7.0,
+      "locations": "蕨ルーム"
+    },
+    {
+      "therapist_id": 5,
+      "name": "梅澤",
+      "shift_count": 7,
+      "avg_hours": 7.0,
+      "locations": "蕨ルーム"
+    },
+    {
+      "therapist_id": 4,
+      "name": "高橋",
+      "shift_count": 7,
+      "avg_hours": 8.0,
+      "locations": "赤羽ルーム"
+    }
+  ],
+  "shift_coverage": [
+    {
+      "schedule_date": "2026-03-16",
+      "day_count": 5,
+      "night_count": 7
+    },
+    {
+      "schedule_date": "2026-03-17",
+      "day_count": 5,
+      "night_count": 7
+    },
+    {
+      "schedule_date": "2026-03-18",
+      "day_count": 5,
+      "night_count": 7
+    },
+    {
+      "schedule_date": "2026-03-19",
+      "day_count": 5,
+      "night_count": 7
+    },
+    {
+      "schedule_date": "2026-03-20",
+      "day_count": 5,
+      "night_count": 7
+    },
+    {
+      "schedule_date": "2026-03-21",
+      "day_count": 5,
+      "night_count": 7
+    },
+    {
+      "schedule_date": "2026-03-22",
+      "day_count": 5,
+      "night_count": 7
+    }
+  ],
+  "today_snapshots": [
+    {
+      "id": 1,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 9,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 165,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "therapist_name": "優木"
+    },
+    {
+      "id": 2,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 193,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "21:00",
+      "therapist_name": "冬月"
+    },
+    {
+      "id": 10,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 158,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛咲"
+    },
+    {
+      "id": 6,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 3,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "therapist_name": "春名"
+    },
+    {
+      "id": 5,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 7,
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "therapist_name": "月野"
+    },
+    {
+      "id": 7,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 8,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 12,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 11,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 4,
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 4,
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "12:00",
+      "end_time": "20:00",
+      "therapist_name": "高橋"
+    }
+  ],
+  "scrape_logs": [
+    {
+      "id": 8,
+      "run_at": "2026-03-16 10:32:26",
+      "task_type": "daily_monitor",
+      "target_date": "2026-03-16",
+      "records_found": 12,
+      "success": 1,
+      "error_message": null
+    },
+    {
+      "id": 7,
+      "run_at": "2026-03-16 10:32:06",
+      "task_type": "weekly",
+      "target_date": "2026-03-22",
+      "records_found": 12,
+      "success": 1,
+      "error_message": null
+    },
+    {
+      "id": 6,
+      "run_at": "2026-03-16 10:32:06",
+      "task_type": "weekly",
+      "target_date": "2026-03-21",
+      "records_found": 12,
+      "success": 1,
+      "error_message": null
+    },
+    {
+      "id": 5,
+      "run_at": "2026-03-16 10:32:06",
+      "task_type": "weekly",
+      "target_date": "2026-03-20",
+      "records_found": 12,
+      "success": 1,
+      "error_message": null
+    },
+    {
+      "id": 4,
+      "run_at": "2026-03-16 10:32:06",
+      "task_type": "weekly",
+      "target_date": "2026-03-19",
+      "records_found": 12,
+      "success": 1,
+      "error_message": null
+    },
+    {
+      "id": 3,
+      "run_at": "2026-03-16 10:32:06",
+      "task_type": "weekly",
+      "target_date": "2026-03-18",
+      "records_found": 12,
+      "success": 1,
+      "error_message": null
+    },
+    {
+      "id": 2,
+      "run_at": "2026-03-16 10:32:06",
+      "task_type": "weekly",
+      "target_date": "2026-03-17",
+      "records_found": 12,
+      "success": 1,
+      "error_message": null
+    },
+    {
+      "id": 1,
+      "run_at": "2026-03-16 10:32:06",
+      "task_type": "weekly",
+      "target_date": "2026-03-16",
+      "records_found": 12,
+      "success": 1,
+      "error_message": null
+    }
+  ],
+  "booking_events": [
+    {
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 48,
+      "therapist_name": "水原",
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 46,
+      "therapist_name": "西島",
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-03-16 10:32:26",
+      "therapist_id": 158,
+      "therapist_name": "愛咲",
+      "schedule_date": "2026-03-16",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null
+    }
+  ],
+  "popularity_ranking": [],
+  "favorites_config": [
+    {
+      "therapist_id": 48,
+      "name": "水原",
+      "note": "蕨ルーム"
+    }
+  ],
+  "favorites_schedule": [
+    {
+      "id": 12,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-16",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原"
+    },
+    {
+      "id": 24,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-17",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原"
+    },
+    {
+      "id": 36,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-18",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原"
+    },
+    {
+      "id": 48,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-19",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原"
+    },
+    {
+      "id": 60,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原"
+    },
+    {
+      "id": 72,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-21",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原"
+    },
+    {
+      "id": 84,
+      "therapist_id": 48,
+      "schedule_date": "2026-03-22",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null,
+      "is_fully_booked": 1,
+      "scraped_at": "2026-03-16 10:32:06",
+      "therapist_name": "水原"
+    }
+  ]
+};
+
+// ── ユーティリティ ─────────────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+function locClass(loc) {
+  if (loc.includes('赤羽')) return 'akabane';
+  if (loc.includes('蕨'))  return 'warabi';
+  return 'akabane';
+}
+function locPill(loc) {
+  const cls = locClass(loc);
+  return `<span class="location-pill loc-${cls}">${loc}</span>`;
+}
+
+function therapistLink(id, name) {
+  return `<a href="https://mabuispa.com/therapist/${id}" target="_blank">${name}</a>`;
+}
+
+// 25:00〜29:00 → 翌1:00〜5:00 に変換して表示
+function displayTime(t) {
+  if (!t) return '';
+  const m = t.match(/^(\d+):(\d{2})$/);
+  if (!m) return t;
+  let h = parseInt(m[1]), mn = m[2];
+  const over = h >= 24;
+  if (over) h -= 24;
+  return `${over ? '翌' : ''}${h}:${mn}`;
+}
+function rawToFloat(t) { // '25:30' → 25.5
+  if (!t) return null;
+  const m = t.match(/^(\d+):(\d{2})$/);
+  return m ? parseInt(m[1]) + parseInt(m[2]) / 60 : null;
+}
+
+// ── メタ情報 ──────────────────────────────────────────────────────────────
+document.getElementById('genAt').textContent = '更新: ' + DATA.generated_at.replace('T', ' ').slice(0, 16);
+
+// ── Favorites Banner ─────────────────────────────────────────────────────
+(function buildFav() {
+  const favs = DATA.favorites_config;
+  if (!favs || !favs.length) return;
+  const banner = document.getElementById('favBanner');
+  banner.style.display = '';
+  const today = DATA.today;
+  const todaySet = new Set(
+    DATA.favorites_schedule
+      .filter(s => s.schedule_date === today)
+      .map(s => s.therapist_id)
+  );
+  const html = favs.map(f => {
+    const isToday = todaySet.has(f.therapist_id);
+    const badge   = isToday ? '<span class="fav-today-badge">TODAY</span>' : '';
+    // 今週出勤日を列挙
+    const dates = DATA.favorites_schedule
+      .filter(s => s.therapist_id === f.therapist_id)
+      .map(s => s.schedule_date.slice(5).replace('-', '/') + (s.is_fully_booked ? '🔴' : ''))
+      .join(', ');
+    return `<div class="fav-card">
+      ${badge}
+      <span>${therapistLink(f.therapist_id, f.name)}</span>
+      <span style="color:var(--muted);font-size:.76rem">${dates || 'No schedule'}</span>
+    </div>`;
+  }).join('');
+  document.getElementById('favCards').innerHTML = html || '<span class="fav-empty">No favorite staff scheduled this week</span>';
+})();
+
+// ── TODAY TAB ────────────────────────────────────────────────────────────
+(function buildToday() {
+  const today = DATA.today;
+  const todayRecords = DATA.weekly_schedules.filter(s => s.schedule_date === today);
+
+  // Metrics
+  const total   = todayRecords.length;
+  const booked  = todayRecords.filter(s => s.is_fully_booked).length;
+  const avail   = total - booked;
+  const rooms   = new Set(todayRecords.map(s => s.location)).size;
+  document.getElementById('metrics').innerHTML = [
+    { val: total,  lbl: '合計スタッフ' },
+    { val: avail,  lbl: '空き' },
+    { val: booked, lbl: '予約満了' },
+    { val: rooms,  lbl: '稼働店舗' },
+  ].map(m => `<div class="metric-card"><div class="val">${m.val}</div><div class="lbl">${m.lbl}</div></div>`).join('');
+
+  // スナップショットから「いつ満了したか」を特定
+  const bookedAtMap = {};
+  DATA.today_snapshots.forEach(s => {
+    if (s.status === 'fully_booked' && !bookedAtMap[s.therapist_id]) {
+      bookedAtMap[s.therapist_id] = s.checked_at.slice(11, 16);
+    }
+  });
+
+  // Room cards
+  const locOrder = ['赤羽ルーム', '蕨ルーム'];
+  const byLoc    = {};
+  todayRecords.forEach(r => {
+    if (!byLoc[r.location]) byLoc[r.location] = [];
+    byLoc[r.location].push(r);
+  });
+
+  const roomHtml = locOrder.filter(l => byLoc[l]).map(loc => {
+    const cls   = locClass(loc);
+    const staff = byLoc[loc];
+    const rows  = staff.map(s => {
+      const dot   = s.is_fully_booked ? 'booked' : 'available';
+      const timeStr = s.is_fully_booked
+        ? `<span class="booked-label">${bookedAtMap[s.therapist_id] ? bookedAtMap[s.therapist_id] + 'に満了' : '予約満了'}</span>`
+        : `<span class="staff-time">${displayTime(s.start_time)}〜${displayTime(s.end_time)}</span>`;
+      return `<div class="staff-row">
+        <span class="status-dot ${dot}"></span>
+        <span class="staff-name">${therapistLink(s.therapist_id, s.therapist_name)}</span>
+        ${timeStr}
+      </div>`;
+    }).join('');
+    return `<div class="room-card">
+      <div class="room-card-header ${cls}">🏠 ${loc} <span style="margin-left:auto;font-size:.75rem;font-weight:400">${staff.length}名</span></div>
+      <div class="room-card-body">${rows}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('roomGrid').innerHTML = roomHtml || '<div class="no-data">本日のスケジュールデータなし</div>';
+
+  // ── Gantt (Chart.js 横棒) ─────────────────────────────────────────────
+  const HOUR_START = 10, HOUR_END = 29; // 10:00〜翌5:00
+  const labels = [];
+  const datasetsMap = {};  // location → dataset
+
+  const COLORS = {
+    '赤羽ルーム': { bg: 'rgba(224,85,85,.6)', border: 'rgba(224,85,85,1)' },
+    '蕨ルーム'  : { bg: 'rgba(85,153,224,.6)', border: 'rgba(85,153,224,1)' },
+  };
+
+  todayRecords.forEach(r => {
+    labels.push(r.therapist_name);
+    const s = rawToFloat(r.start_time);
+    const e = rawToFloat(r.end_time);
+    if (!datasetsMap[r.location]) {
+      const c = COLORS[r.location] || COLORS['赤羽ルーム'];
+      datasetsMap[r.location] = {
+        label: r.location,
+        data: [],
+        backgroundColor: [],
+        borderColor: [],
+        borderWidth: 1,
+        borderRadius: 3,
+        borderSkipped: false,
+      };
+    }
+    const ds = datasetsMap[r.location];
+    const nullSlot = labels.map(() => null);
+    // 各 dataset に全ラベル分の null を埋める
+    while (ds.data.length < labels.length - 1) ds.data.push(null);
+    if (r.is_fully_booked || !s || !e) {
+      ds.data.push(null);
+      ds.backgroundColor.push(datasetsMap[r.location] ? COLORS[r.location]?.bg : 'rgba(200,200,200,.3)');
+      ds.borderColor.push('transparent');
+    } else {
+      ds.data.push([s, e]);
+      ds.backgroundColor.push(r.is_fully_booked
+        ? 'rgba(224,85,85,.2)' : COLORS[r.location]?.bg || 'rgba(201,168,76,.6)');
+      ds.borderColor.push(COLORS[r.location]?.border || 'rgba(201,168,76,1)');
+    }
+  });
+
+  // 他 dataset も同じ長さに揃える
+  Object.values(datasetsMap).forEach(ds => {
+    while (ds.data.length < labels.length) ds.data.push(null);
+  });
+
+  // 現在時刻（JST）
+  const nowJst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+  const nowHr  = nowJst.getHours() + nowJst.getMinutes() / 60;
+  const nowNorm= nowHr < 6 ? nowHr + 24 : nowHr; // 深夜正規化
+
+  const ganttCtx = document.getElementById('ganttChart').getContext('2d');
+  new Chart(ganttCtx, {
+    type: 'bar',
+    data: { labels, datasets: Object.values(datasetsMap) },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#7a7a90', font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const v = ctx.raw;
+              if (!v) return '';
+              const fmt = h => {
+                const hh = Math.floor(h >= 24 ? h - 24 : h);
+                const mm = Math.round((h % 1) * 60);
+                const pfx = h >= 24 ? '翌' : '';
+                return `${pfx}${hh}:${mm.toString().padStart(2,'0')}`;
+              };
+              return `${ctx.dataset.label} ${fmt(v[0])}〜${fmt(v[1])}`;
+            }
+          }
+        },
+        annotation: {
+          annotations: {
+            nowLine: {
+              type: 'line',
+              scaleID: 'x',
+              value: nowNorm,
+              borderColor: 'rgba(255,80,80,.8)',
+              borderWidth: 2,
+              borderDash: [4, 3],
+              label: {
+                content: `Now ${nowJst.getHours()}:${nowJst.getMinutes().toString().padStart(2,'0')}`,
+                display: true,
+                position: 'start',
+                color: '#ff5050',
+                font: { size: 10 },
+                backgroundColor: 'rgba(0,0,0,.7)',
+              }
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          min: HOUR_START, max: HOUR_END,
+          ticks: {
+            color: '#7a7a90',
+            callback: v => {
+              const h = v >= 24 ? v - 24 : v;
+              return `${v >= 24 ? '翌' : ''}${h}時`;
+            },
+            stepSize: 2,
+          },
+          grid: { color: '#2a2a35' },
+        },
+        y: {
+          ticks: { color: '#e8e8f0', font: { size: 11 } },
+          grid: { display: false },
+        }
+      }
+    }
+  });
+  // Canvas 高さを動的設定
+  document.getElementById('ganttChart').parentElement.style.height =
+    Math.max(200, labels.length * 34) + 'px';
+})();
+
+// ── WEEKLY TAB ───────────────────────────────────────────────────────────
+(function buildWeekly() {
+  const dates = DATA.week_dates;
+  const labels = dates.map(d => {
+    const day = ['日','月','火','水','木','金','土'][new Date(d).getDay()];
+    return d.slice(5).replace('-', '/') + `(${day})`;
+  });
+
+  const locOrder = ['赤羽ルーム', '蕨ルーム'];
+  const locColors = {
+    '赤羽ルーム': { bg: 'rgba(224,85,85,.6)', border: '#e05555' },
+    '蕨ルーム'  : { bg: 'rgba(85,153,224,.6)', border: '#5599e0' },
+  };
+
+  // 週間スタッフ数 棒グラフ
+  const sumByDateLoc = {};
+  DATA.daily_location_summary.forEach(r => {
+    if (!sumByDateLoc[r.schedule_date]) sumByDateLoc[r.schedule_date] = {};
+    sumByDateLoc[r.schedule_date][r.location] = r.staff_count;
+  });
+  const barDatasets = locOrder.map(loc => ({
+    label: loc,
+    data: dates.map(d => (sumByDateLoc[d] || {})[loc] || 0),
+    backgroundColor: locColors[loc].bg,
+    borderColor: locColors[loc].border,
+    borderWidth: 1, borderRadius: 4,
+  }));
+  new Chart(document.getElementById('weeklyBarChart'), {
+    type: 'bar',
+    data: { labels, datasets: barDatasets },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: '#7a7a90', font: { size: 11 } } },
+      },
+      scales: {
+        x: { stacked: true, ticks: { color: '#7a7a90' }, grid: { color: '#2a2a35' } },
+        y: { stacked: true, ticks: { color: '#7a7a90', precision: 0 }, grid: { color: '#2a2a35' } },
+      }
+    }
+  });
+
+  // 昼夜バランス
+  const scMap = {};
+  DATA.shift_coverage.forEach(r => { scMap[r.schedule_date] = r; });
+  new Chart(document.getElementById('shiftChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: '昼帯(<18時)', data: dates.map(d => (scMap[d] || {}).day_count || 0),
+          backgroundColor: 'rgba(234,179,8,.5)', borderColor: '#eab308', borderWidth: 1, borderRadius: 4 },
+        { label: '夜帯(18時~)', data: dates.map(d => (scMap[d] || {}).night_count || 0),
+          backgroundColor: 'rgba(129,77,255,.5)', borderColor: '#8147ff', borderWidth: 1, borderRadius: 4 },
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { labels: { color: '#7a7a90', font: { size: 11 } } } },
+      scales: {
+        x: { stacked: true, ticks: { color: '#7a7a90' }, grid: { color: '#2a2a35' } },
+        y: { stacked: true, ticks: { color: '#7a7a90', precision: 0 }, grid: { color: '#2a2a35' } },
+      }
+    }
+  });
+
+  // ヒートマップ
+  const allLocs = locOrder;
+  const table   = document.getElementById('heatmapTable');
+  const maxCount = Math.max(...DATA.daily_location_summary.map(r => r.staff_count), 1);
+  const headRow  = `<tr><th>店舗</th>${labels.map(l => `<th>${l}</th>`).join('')}</tr>`;
+  const bodyRows = allLocs.map(loc => {
+    const cells = dates.map(d => {
+      const cnt  = (sumByDateLoc[d] || {})[loc] || 0;
+      const lvl  = Math.min(4, Math.round((cnt / maxCount) * 4));
+      return `<td class="heatmap-${lvl}">${cnt || ''}</td>`;
+    }).join('');
+    return `<tr><th>${locPill(loc)}</th>${cells}</tr>`;
+  }).join('');
+  table.innerHTML = `<thead>${headRow}</thead><tbody>${bodyRows}</tbody>`;
+})();
+
+// ── STATS TAB ────────────────────────────────────────────────────────────
+(function buildStats() {
+  // 人気度ランキング
+  const ranking = DATA.popularity_ranking;
+  const maxDays = Math.max(...ranking.map(r => r.booked_days), 1);
+
+  function speedClass(h) {
+    if (h < 2)  return ['speed-lightning', '⚡ Lightning (<2h)'];
+    if (h < 6)  return ['speed-moderate',  '🔥 Moderate (2-6h)'];
+    return           ['speed-gradual',    '🌿 Gradual (>6h)'];
+  }
+
+  document.getElementById('rankGrid').innerHTML = ranking.length
+    ? ranking.map((r, i) => {
+        const [cls, label] = speedClass(r.avg_hours_to_book);
+        const barW = Math.round((r.booked_days / maxDays) * 100);
+        return `<div class="rank-card">
+          <div class="rank-num">#${i + 1}</div>
+          <div class="rank-name">${therapistLink(r.therapist_id, r.name)}</div>
+          <span class="rank-speed ${cls}">${label}</span>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:6px">
+            平均 ${r.avg_hours_to_book}h で満了 / ${r.booked_days}日計測
+          </div>
+          <div class="rank-bar-bg"><div class="rank-bar" style="width:${barW}%"></div></div>
+        </div>`;
+      }).join('')
+    : '<div class="no-data">スナップショットデータが不足しています（監視を継続中）</div>';
+
+  // 出勤頻度 横棒グラフ
+  const stats = DATA.therapist_stats.slice(0, 20);
+  new Chart(document.getElementById('freqChart'), {
+    type: 'bar',
+    data: {
+      labels: stats.map(s => s.name),
+      datasets: [{
+        label: 'シフト数（直近30日）',
+        data: stats.map(s => s.shift_count),
+        backgroundColor: stats.map(s =>
+          s.locations?.includes('赤羽') ? 'rgba(224,85,85,.6)' : 'rgba(85,153,224,.6)'
+        ),
+        borderColor: stats.map(s =>
+          s.locations?.includes('赤羽') ? '#e05555' : '#5599e0'
+        ),
+        borderWidth: 1, borderRadius: 4,
+      }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#7a7a90', precision: 0 }, grid: { color: '#2a2a35' } },
+        y: { ticks: { color: '#e8e8f0', font: { size: 11 } }, grid: { display: false } },
+      }
+    }
+  });
+  document.getElementById('freqChart').parentElement.style.height =
+    Math.max(200, stats.length * 30) + 'px';
+
+  // テーブル
+  const rankMap = {};
+  ranking.forEach((r, i) => { rankMap[r.therapist_id] = { rank: i + 1, ...r }; });
+  document.getElementById('statsTableBody').innerHTML = DATA.therapist_stats.map(s => {
+    const rk = rankMap[s.therapist_id];
+    const [cls, label] = rk ? speedClass(rk.avg_hours_to_book) : ['', '—'];
+    const speedTag = rk ? `<span class="rank-speed ${cls}" style="font-size:.7rem">${label}</span>` : '—';
+    return `<tr>
+      <td>${therapistLink(s.therapist_id, s.name)}</td>
+      <td>${s.shift_count}</td>
+      <td>${s.avg_hours != null ? s.avg_hours + 'h' : '—'}</td>
+      <td>${locPill(s.locations || '—')}</td>
+      <td>${speedTag}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="5" class="no-data">データなし</td></tr>';
+
+  function speedClass(h) {
+    if (h < 2)  return ['speed-lightning', '⚡ Lightning'];
+    if (h < 6)  return ['speed-moderate',  '🔥 Moderate'];
+    return           ['speed-gradual',    '🌿 Gradual'];
+  }
+})();
+
+// ── MONITOR LOG TAB ───────────────────────────────────────────────────────
+(function buildLog() {
+  // Snapshots
+  document.getElementById('snapshotBody').innerHTML = DATA.today_snapshots.length
+    ? DATA.today_snapshots.map(s => `<tr>
+        <td>${s.checked_at.slice(11, 16)}</td>
+        <td>${therapistLink(s.therapist_id, s.therapist_name)}</td>
+        <td>${locPill(s.location)}</td>
+        <td class="${s.status === 'available' ? 'status-available' : 'status-booked'}">
+          ${s.status === 'available' ? '空き' : '満了'}
+        </td>
+        <td style="color:var(--muted)">${s.start_time ? displayTime(s.start_time) + '〜' + displayTime(s.end_time) : '—'}</td>
+      </tr>`).join('')
+    : '<tr><td colspan="5" class="no-data">本日のスナップショットなし</td></tr>';
+
+  // Scrape logs
+  document.getElementById('logBody').innerHTML = DATA.scrape_logs.map(l => `<tr>
+    <td>${l.run_at}</td>
+    <td>${l.task_type}</td>
+    <td>${l.target_date || '—'}</td>
+    <td>${l.records_found}</td>
+    <td class="${l.success ? 'success-ok' : 'success-ng'}">${l.success ? '✓ OK' : '✗ NG: ' + l.error_message}</td>
+  </tr>`).join('') || '<tr><td colspan="5" class="no-data">ログなし</td></tr>';
+})();
+</script>
+</body>
+</html>

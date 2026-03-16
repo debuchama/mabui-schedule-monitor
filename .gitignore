@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+# DB は commit する（GitHub Actions で更新）
+# data/mabuispa.db はトラック対象
+data/dashboard_data.json
+dashboards/dashboard.html
