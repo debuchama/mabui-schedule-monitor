@@ -2,8 +2,10 @@ name: Availability Monitor (30min)
 
 on:
   schedule:
-    # JST 12:00〜翌5:00 の 30 分ごと = UTC 3:00〜20:00
-    - cron: '0,30 3-20 * * *'
+    # 営業時間 JST 10:00〜翌5:00 に合わせて UTC 1:00〜20:00 の30分毎
+    # UTC  1:00 = JST 10:00  (営業開始)
+    # UTC 20:00 = JST 翌5:00 (営業終了)
+    - cron: '0,30 1-20 * * *'
   workflow_dispatch:
 
 permissions:
@@ -34,6 +36,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add data/mabuispa.db
           git diff --staged --quiet || git commit -m "monitor: snapshot $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
