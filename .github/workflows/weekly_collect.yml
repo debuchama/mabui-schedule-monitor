@@ -28,10 +28,10 @@ jobs:
       - name: Initialize DB
         run: python scripts/db_setup.py
 
-      - name: Weekly collect
+      - name: Weekly collect (7日分スケジュール)
         run: python scripts/weekly_collector.py
 
-      - name: Daily monitor snapshot
+      - name: Daily monitor snapshot (当日分も取得)
         run: python scripts/daily_monitor.py
 
       - name: Export JSON
@@ -56,6 +56,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add data/mabuispa.db data/dashboard_data.json docs/index.html
           git diff --staged --quiet || git commit -m "chore: auto update $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push

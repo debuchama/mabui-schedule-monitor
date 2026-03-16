@@ -1,9 +1,9 @@
-name: Availability Monitor (30min)
+name: Availability Monitor (1h)
 
 on:
   schedule:
-    # 営業時間 JST 10:00〜翌5:00 に合わせて UTC 1:00〜20:00 の30分毎
-    - cron: '0,30 1-20 * * *'
+    # JST 10:00〜翌5:00 / 1時間毎 = UTC 1:00〜20:00
+    - cron: '0 1-20 * * *'
   workflow_dispatch:
 
 permissions:
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: pip install httpx beautifulsoup4
 
-      - name: Initialize DB (冪等)
+      - name: Initialize DB
         run: python scripts/db_setup.py
 
       - name: Snapshot today's availability
