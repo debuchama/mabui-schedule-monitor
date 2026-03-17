@@ -23,6 +23,27 @@ def now_jst() -> str:
     return datetime.now(JST).strftime('%Y-%m-%d %H:%M:%S')
 
 
+def upsert_therapist(cur, record: dict, scraped_at: str):
+    """
+    therapists テーブルに存在しない場合は INSERT、ある場合は last_seen 更新。
+    daily_monitor は weekly_collector より先に動くことがあるため、
+    ここで UPSERT しないと availability_snapshots の外部キー制約違反が発生する。
+    """
+    cur.execute("""
+        INSERT INTO therapists (therapist_id, name, age, height_cm, cup_size,
+                                first_seen, last_seen, is_active)
+        VALUES (:therapist_id, :name, :age, :height_cm, :cup_size,
+                :scraped_at, :scraped_at, 1)
+        ON CONFLICT(therapist_id) DO UPDATE SET
+            name      = COALESCE(name,      excluded.name),
+            age       = COALESCE(age,       excluded.age),
+            height_cm = COALESCE(height_cm, excluded.height_cm),
+            cup_size  = COALESCE(cup_size,  excluded.cup_size),
+            last_seen = excluded.last_seen,
+            is_active = 1
+    """, {**record, 'scraped_at': scraped_at})
+
+
 def get_previous_snapshot(cur, therapist_id: int, schedule_date: str) -> dict | None:
     """直前のスナップショットを返す。"""
     row = cur.execute("""
@@ -64,6 +85,9 @@ def run_once(db_path: str = DB_PATH) -> int:
     changes = 0
 
     for rec in records:
+        # 外部キー違反防止: therapist が未登録なら先に UPSERT
+        upsert_therapist(cur, rec, at)
+
         tid  = rec['therapist_id']
         prev = get_previous_snapshot(cur, tid, today)
         cur_status = 'fully_booked' if rec['is_fully_booked'] else 'available'
