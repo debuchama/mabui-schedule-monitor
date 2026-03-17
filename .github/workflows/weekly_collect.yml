@@ -2,7 +2,6 @@ name: Weekly Collect & Deploy Dashboard
 
 on:
   schedule:
-    # JST 6:00 = UTC 21:00 (前日)
     - cron: '0 21 * * *'
   workflow_dispatch:
 
@@ -28,10 +27,10 @@ jobs:
       - name: Initialize DB
         run: python scripts/db_setup.py
 
-      - name: Weekly collect (7日分スケジュール)
+      - name: Weekly collect
         run: python scripts/weekly_collector.py
 
-      - name: Daily monitor snapshot (当日分も取得)
+      - name: Daily monitor snapshot
         run: python scripts/daily_monitor.py
 
       - name: Export JSON
@@ -40,7 +39,7 @@ jobs:
       - name: Build dashboard HTML
         run: |
           python -c "
-          import json, shutil, os
+          import json, os
           with open('data/dashboard_data.json', encoding='utf-8') as f:
               data_str = f.read()
           with open('dashboards/dashboard_template.html', encoding='utf-8') as f:
@@ -56,7 +55,8 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
           git add data/mabuispa.db data/dashboard_data.json docs/index.html
-          git diff --staged --quiet || git commit -m "chore: auto update $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git diff --staged --quiet && echo "No changes" && exit 0
+          git commit -m "chore: auto update $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git pull --rebase=false -X ours origin main
           git push
