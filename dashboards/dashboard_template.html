@@ -54,7 +54,7 @@ a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold-l);text-decora
 .sr{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);font-size:.8rem}
 .sr:last-child{border-bottom:none}
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.dot.a{background:var(--avail)}.dot.b{background:var(--booked)}
+.dot.a{background:var(--avail)}.dot.b{background:var(--booked)}.dot.e{background:var(--muted)}
 .sn{flex:1}.st2{color:var(--muted);font-size:.76rem;white-space:nowrap}
 .bl{color:var(--booked);font-size:.7rem;font-weight:500}
 /* gantt */
@@ -132,6 +132,8 @@ a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold-l);text-decora
   <div class="mx" id="metrics"></div>
   <div class="st">今日の出勤スタッフ</div>
   <div class="rg" id="roomGrid"></div>
+  <div class="st" id="endedSt" style="display:none">シフト終了</div>
+  <div class="rg" id="endedGrid" style="display:none"></div>
   <div class="st">タイムライン (Gantt)</div>
   <div class="gw"><div class="gl" id="ganttLegend"></div><div style="position:relative"><canvas id="ganttChart"></canvas></div></div>
 </div>
@@ -264,17 +266,33 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
     {v:new Set(rec.map(s=>s.location)).size,l:'稼働店舗'},
   ].map(m=>`<div class="mc"><div class="v">${m.v}</div><div class="l">${m.l}</div></div>`).join('');
 
-  const bkdF={},bkdStr={},shSnap={};
+  // スナップショットから最新ステータス・満了時刻・シフト時刻を解析
+  const bkdF={},bkdStr={},shSnap={},lastStatus={},endedAt={};
   DATA.today_snapshots.forEach(s=>{
     if(s.status==='available'&&s.start_time&&!shSnap[s.therapist_id])
       shSnap[s.therapist_id]={start:s.start_time,end:s.end_time};
     if(s.status==='fully_booked'&&!bkdF[s.therapist_id]){
       const f=ca2f(s.checked_at);if(f!==null){bkdF[s.therapist_id]=f;bkdStr[s.therapist_id]=ca2hm(s.checked_at);}
     }
+    if(s.status==='shift_ended'&&!endedAt[s.therapist_id])
+      endedAt[s.therapist_id]=s.checked_at.slice(11,16);
+    lastStatus[s.therapist_id]=s.status; // 最後に更新されたステータス
   });
 
+  // shift_ended の人を除外して active/ended に分ける
+  const activeRec=rec.filter(r=>lastStatus[r.therapist_id]!=='shift_ended');
+  const endedRec =rec.filter(r=>lastStatus[r.therapist_id]==='shift_ended');
+
+  // メトリクスは active のみでカウント
+  const actTotal=activeRec.length,actBkd=activeRec.filter(s=>s.is_fully_booked).length;
+  document.getElementById('metrics').innerHTML=[
+    {v:actTotal,l:'出勤中'},{v:actTotal-actBkd,l:'空き'},
+    {v:actBkd,l:'予約満了'},{v:new Set(activeRec.map(s=>s.location)).size,l:'稼働店舗'},
+  ].map(m=>`<div class="mc"><div class="v">${m.v}</div><div class="l">${m.l}</div></div>`).join('');
+
+  // ── Active 店舗カード ──────────────────────────────────────────────
   const lo=['赤羽ルーム','蕨ルーム'],byL={};
-  rec.forEach(r=>{if(!byL[r.location])byL[r.location]=[];byL[r.location].push(r);});
+  activeRec.forEach(r=>{if(!byL[r.location])byL[r.location]=[];byL[r.location].push(r);});
   document.getElementById('roomGrid').innerHTML=lo.filter(l=>byL[l]).map(loc=>{
     const cls=lc(loc);
     const rows=(byL[loc]||[]).map(s=>{
@@ -286,10 +304,34 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
     return`<div class="rc"><div class="rh ${cls}">🏠 ${loc}<span style="margin-left:auto;font-size:.73rem;font-weight:400">${(byL[loc]||[]).length}名</span></div><div class="rb">${rows}</div></div>`;
   }).join('')||'<div class="nd">本日のスケジュールデータなし</div>';
 
+  // ── シフト終了 カード ─────────────────────────────────────────────
+  if(endedRec.length){
+    document.getElementById('endedSt').style.display='';
+    document.getElementById('endedGrid').style.display='';
+    const byLE={};
+    endedRec.forEach(r=>{if(!byLE[r.location])byLE[r.location]=[];byLE[r.location].push(r);});
+    document.getElementById('endedGrid').innerHTML=lo.filter(l=>byLE[l]).map(loc=>{
+      const cls=lc(loc);
+      const rows=(byLE[loc]||[]).map(s=>{
+        const snap=shSnap[s.therapist_id];
+        const sT=s.start_time||snap?.start,eT=s.end_time||snap?.end;
+        const endTime=endedAt[s.therapist_id]?`${endedAt[s.therapist_id]} 終了`:'シフト終了';
+        const timeStr=sT?`${dt(sT)}〜${dt(eT)}`:'';
+        return`<div class="sr" style="opacity:.55">
+          <span class="dot e"></span>
+          <span class="sn">${tl(s.therapist_id,s.therapist_name)}</span>
+          <span class="st2">${timeStr?timeStr+' / ':''}<span style="color:var(--muted)">${endTime}</span></span>
+        </div>`;
+      }).join('');
+      return`<div class="rc" style="opacity:.7"><div class="rh ${cls}" style="opacity:.6">🏠 ${loc}<span style="margin-left:auto;font-size:.73rem;font-weight:400">${(byLE[loc]||[]).length}名</span></div><div class="rb">${rows}</div></div>`;
+    }).join('');
+  }
+
   // Gantt
   const C={'赤羽ルーム':{s:'rgba(224,85,85,.72)',sb:'#e05555',f:'rgba(224,85,85,.18)',fb:'rgba(224,85,85,.5)'},
            '蕨ルーム'  :{s:'rgba(85,153,224,.72)',sb:'#5599e0',f:'rgba(85,153,224,.18)',fb:'rgba(85,153,224,.5)'}};
-  const labels=rec.map(r=>r.therapist_name);
+  // Gantt は activeRec のみ（シフト終了除外）
+  const labels=activeRec.map(r=>r.therapist_name);
   const sd=[],sdb=[],sdc=[],fd=[],fdb=[],fdc=[],md=[],mdb=[],mdc=[];
   const an={};
   const nj=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Tokyo'}));
@@ -298,7 +340,7 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
     label:{content:`Now ${String(nj.getHours()).padStart(2,'0')}:${String(nj.getMinutes()).padStart(2,'0')}`,
       display:true,position:'start',color:'#ff5050',font:{size:10},backgroundColor:'rgba(0,0,0,.7)'}};
 
-  rec.forEach(r=>{
+  activeRec.forEach(r=>{
     const c=C[r.location]||C['赤羽ルーム'];
     const sn=shSnap[r.therapist_id];
     const sT=r.start_time||(sn?sn.start:null),eT=r.end_time||(sn?sn.end:null);
