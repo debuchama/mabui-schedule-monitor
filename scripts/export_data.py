@@ -90,21 +90,71 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
     """)
 
     # 9. popularity_ranking
+    # 計測ルール:
+    #   計測基準点 = MAX(first_avail, shift_start)  — シフト開始後から測る
+    #   除外条件  = booked_at < shift_start - 1h    — シフト1h以上前の満了は事前予約とみなし除外
+    #   shift_start が不明な場合は first_avail を基準にする
     popularity_ranking = q(conn, """
         WITH ranked AS (
             SELECT therapist_id, schedule_date, status, checked_at,
                    ROW_NUMBER() OVER(PARTITION BY therapist_id,schedule_date,status ORDER BY checked_at) AS rn
             FROM availability_snapshots
         ),
-        fa AS (SELECT therapist_id,schedule_date,checked_at AS avail_at  FROM ranked WHERE status='available'    AND rn=1),
-        fb AS (SELECT therapist_id,schedule_date,checked_at AS booked_at FROM ranked WHERE status='fully_booked' AND rn=1)
+        fa AS (
+            SELECT therapist_id, schedule_date, checked_at AS avail_at
+            FROM ranked WHERE status='available' AND rn=1
+        ),
+        fb AS (
+            SELECT therapist_id, schedule_date, checked_at AS booked_at
+            FROM ranked WHERE status='fully_booked' AND rn=1
+        ),
+        -- シフト開始時刻をfloat(h)に変換: 深夜(0〜5時)は+24して正規化
+        shift_h AS (
+            SELECT therapist_id, schedule_date,
+                   CASE
+                     WHEN start_time IS NULL THEN NULL
+                     WHEN CAST(SUBSTR(start_time,1,2) AS INTEGER) < 6
+                       THEN CAST(SUBSTR(start_time,1,2) AS INTEGER) + 24
+                            + CAST(SUBSTR(start_time,4,2) AS INTEGER) / 60.0
+                     ELSE CAST(SUBSTR(start_time,1,2) AS INTEGER)
+                          + CAST(SUBSTR(start_time,4,2) AS INTEGER) / 60.0
+                   END AS shift_start_h
+            FROM daily_schedules
+        )
         SELECT fa.therapist_id, t.name,
-               COUNT(*)  AS booked_days,
-               ROUND(AVG((JULIANDAY(fb.booked_at)-JULIANDAY(fa.avail_at))*24.0),2) AS avg_hours_to_book
-        FROM fa JOIN fb ON fa.therapist_id=fb.therapist_id AND fa.schedule_date=fb.schedule_date
-                       AND fb.booked_at>fa.avail_at
-                JOIN therapists t ON t.therapist_id=fa.therapist_id
-        GROUP BY fa.therapist_id HAVING booked_days>=1
+               COUNT(*) AS booked_days,
+               ROUND(AVG(
+                 -- 計測基準: MAX(avail_at, shift_start) からの経過時間
+                 (JULIANDAY(fb.booked_at) - JULIANDAY(
+                   CASE
+                     WHEN sh.shift_start_h IS NULL THEN fa.avail_at
+                     -- avail_at の時刻(h)と shift_start_h を比較してどちらか大きい方
+                     WHEN (CAST(SUBSTR(fa.avail_at,12,2) AS REAL)
+                           + CAST(SUBSTR(fa.avail_at,15,2) AS REAL)/60.0) >= sh.shift_start_h
+                       THEN fa.avail_at   -- avail_at >= shift_start なら avail_at をそのまま
+                     ELSE
+                       -- shift_start を同日の datetime として組み立て
+                       SUBSTR(fa.avail_at,1,11)
+                       || printf('%02d', CAST(sh.shift_start_h AS INTEGER)) || ':'
+                       || printf('%02d', CAST((sh.shift_start_h - CAST(sh.shift_start_h AS INTEGER))*60 AS INTEGER))
+                       || ':00'
+                   END
+                 )) * 24.0
+               ), 2) AS avg_hours_to_book
+        FROM fa
+        JOIN fb ON fa.therapist_id=fb.therapist_id
+               AND fa.schedule_date=fb.schedule_date
+               AND fb.booked_at > fa.avail_at
+        JOIN therapists t ON t.therapist_id=fa.therapist_id
+        LEFT JOIN shift_h sh ON sh.therapist_id=fa.therapist_id AND sh.schedule_date=fa.schedule_date
+        WHERE
+          -- 除外: booked_at がシフト開始の1時間以上前（事前予約）
+          sh.shift_start_h IS NULL
+          OR (
+            CAST(SUBSTR(fb.booked_at,12,2) AS REAL) + CAST(SUBSTR(fb.booked_at,15,2) AS REAL)/60.0
+          ) >= sh.shift_start_h - 1.0
+        GROUP BY fa.therapist_id
+        HAVING booked_days >= 1
         ORDER BY avg_hours_to_book ASC
     """)
 
