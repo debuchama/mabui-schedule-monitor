@@ -59,7 +59,7 @@ def init_db(db_path=DB_PATH):
             therapist_id  INTEGER NOT NULL REFERENCES therapists(therapist_id),
             schedule_date TEXT    NOT NULL,
             location      TEXT    NOT NULL,
-            status        TEXT    NOT NULL CHECK(status IN ('available','fully_booked')),
+            status        TEXT    NOT NULL CHECK(status IN ('available','fully_booked','shift_ended')),
             start_time    TEXT,
             end_time      TEXT
         )
