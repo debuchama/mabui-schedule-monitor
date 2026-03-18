@@ -2,6 +2,7 @@ name: Weekly Collect & Deploy Dashboard
 
 on:
   schedule:
+    # JST 6:00 = UTC 21:00 (前日) — 毎日実行
     - cron: '0 21 * * *'
   workflow_dispatch:
 
