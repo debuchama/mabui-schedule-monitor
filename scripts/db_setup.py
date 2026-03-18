@@ -1,28 +1,23 @@
 """
 db_setup.py — SQLiteスキーマ定義・初期化
-mabuispa.com 専用 (赤羽ルーム / 蕨ルーム 2店舗)
 """
-
-import sqlite3
-import os
+import sqlite3, os
 
 DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'mabuispa.db')
 
-
-def get_connection(db_path: str = DB_PATH) -> sqlite3.Connection:
+def get_connection(db_path=DB_PATH):
     conn = sqlite3.connect(db_path)
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA foreign_keys=ON")
     conn.row_factory = sqlite3.Row
     return conn
 
-
-def init_db(db_path: str = DB_PATH):
+def init_db(db_path=DB_PATH):
     os.makedirs(os.path.dirname(os.path.abspath(db_path)), exist_ok=True)
     conn = get_connection(db_path)
-    cur = conn.cursor()
+    cur  = conn.cursor()
 
-    # ── therapists ────────────────────────────────────────────────────────────
+    # ── therapists ────────────────────────────────────────────────────────
     cur.execute("""
         CREATE TABLE IF NOT EXISTS therapists (
             therapist_id  INTEGER PRIMARY KEY,
@@ -30,14 +25,18 @@ def init_db(db_path: str = DB_PATH):
             age           INTEGER,
             height_cm     INTEGER,
             cup_size      TEXT,
+            tags          TEXT,          -- JSON配列 ["事前予約必須","圧倒的リピート率",...]
             first_seen    TEXT,
             last_seen     TEXT,
             is_active     INTEGER DEFAULT 1
         )
     """)
+    # tagsカラムが存在しない場合はALTER TABLE で追加（既存DB対応）
+    cols = [r[1] for r in cur.execute("PRAGMA table_info(therapists)").fetchall()]
+    if 'tags' not in cols:
+        cur.execute("ALTER TABLE therapists ADD COLUMN tags TEXT")
 
-    # ── daily_schedules ───────────────────────────────────────────────────────
-    # UNIQUE(therapist_id, schedule_date) → 同日再スクレイプは UPSERT 上書き
+    # ── daily_schedules ───────────────────────────────────────────────────
     cur.execute("""
         CREATE TABLE IF NOT EXISTS daily_schedules (
             id               INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,8 +51,7 @@ def init_db(db_path: str = DB_PATH):
         )
     """)
 
-    # ── availability_snapshots ────────────────────────────────────────────────
-    # 追記専用。「何時に予約が埋まったか」を遡れる。
+    # ── availability_snapshots ────────────────────────────────────────────
     cur.execute("""
         CREATE TABLE IF NOT EXISTS availability_snapshots (
             id            INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -61,13 +59,13 @@ def init_db(db_path: str = DB_PATH):
             therapist_id  INTEGER NOT NULL REFERENCES therapists(therapist_id),
             schedule_date TEXT    NOT NULL,
             location      TEXT    NOT NULL,
-            status        TEXT    NOT NULL CHECK(status IN ('available', 'fully_booked')),
+            status        TEXT    NOT NULL CHECK(status IN ('available','fully_booked')),
             start_time    TEXT,
             end_time      TEXT
         )
     """)
 
-    # ── scrape_logs ───────────────────────────────────────────────────────────
+    # ── scrape_logs ───────────────────────────────────────────────────────
     cur.execute("""
         CREATE TABLE IF NOT EXISTS scrape_logs (
             id             INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -80,17 +78,19 @@ def init_db(db_path: str = DB_PATH):
         )
     """)
 
-    # ── インデックス ──────────────────────────────────────────────────────────
-    cur.execute("CREATE INDEX IF NOT EXISTS idx_ds_date     ON daily_schedules(schedule_date)")
-    cur.execute("CREATE INDEX IF NOT EXISTS idx_ds_tid      ON daily_schedules(therapist_id)")
-    cur.execute("CREATE INDEX IF NOT EXISTS idx_snap_date   ON availability_snapshots(schedule_date)")
-    cur.execute("CREATE INDEX IF NOT EXISTS idx_snap_tid    ON availability_snapshots(therapist_id)")
-    cur.execute("CREATE INDEX IF NOT EXISTS idx_snap_chk    ON availability_snapshots(checked_at)")
+    # ── インデックス ──────────────────────────────────────────────────────
+    for sql in [
+        "CREATE INDEX IF NOT EXISTS idx_ds_date   ON daily_schedules(schedule_date)",
+        "CREATE INDEX IF NOT EXISTS idx_ds_tid    ON daily_schedules(therapist_id)",
+        "CREATE INDEX IF NOT EXISTS idx_snap_date ON availability_snapshots(schedule_date)",
+        "CREATE INDEX IF NOT EXISTS idx_snap_tid  ON availability_snapshots(therapist_id)",
+        "CREATE INDEX IF NOT EXISTS idx_snap_chk  ON availability_snapshots(checked_at)",
+    ]:
+        cur.execute(sql)
 
     conn.commit()
     conn.close()
     print(f"[db_setup] DB initialized: {os.path.abspath(db_path)}")
-
 
 if __name__ == '__main__':
     init_db()
