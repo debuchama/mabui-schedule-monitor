@@ -1,8 +1,10 @@
-name: Availability Monitor (1h)
+name: Availability Monitor (30min)
 
 on:
   schedule:
-    - cron: '0 1-20 * * *'
+    # JST 10:00〜翌5:00 / 30分毎
+    # UTC 1:00〜20:00 の :00 と :30
+    - cron: '0,30 1-20 * * *'
   workflow_dispatch:
 
 permissions:
