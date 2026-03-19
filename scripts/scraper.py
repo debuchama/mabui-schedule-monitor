@@ -2,8 +2,12 @@
 scraper.py — mabuispa.com コアスクレイパー
 """
 import re, time, logging, unicodedata, json
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime, timezone
 from typing import Optional
+
+JST = timezone(timedelta(hours=9))
+def today_jst() -> str:
+    return datetime.now(JST).date().isoformat()
 
 import httpx
 from bs4 import BeautifulSoup
@@ -127,7 +131,7 @@ def scrape_day(target_date, client=None):
 
 def scrape_week(start_date=None):
     if start_date is None:
-        start = date.today()
+        start = datetime.now(JST).date()
     else:
         start = date.fromisoformat(start_date)
     client  = _make_client()
@@ -145,7 +149,7 @@ def scrape_week(start_date=None):
     return results
 
 def scrape_today():
-    return scrape_day(date.today().isoformat())
+    return scrape_day(today_jst())
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
