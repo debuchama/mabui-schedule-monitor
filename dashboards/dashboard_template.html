@@ -351,63 +351,117 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
     }).join('');
   }
 
-  // Gantt
-  const C={'赤羽ルーム':{s:'rgba(224,85,85,.72)',sb:'#e05555',f:'rgba(224,85,85,.18)',fb:'rgba(224,85,85,.5)'},
-           '蕨ルーム'  :{s:'rgba(85,153,224,.72)',sb:'#5599e0',f:'rgba(85,153,224,.18)',fb:'rgba(85,153,224,.5)'}};
-  // Gantt は activeRec のみ（シフト終了除外）
-  const labels=activeRec.map(r=>r.therapist_name);
-  const sd=[],sdb=[],sdc=[],fd=[],fdb=[],fdc=[],md=[],mdb=[],mdc=[];
-  const an={};
-  const nj=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Tokyo'}));
-  const nh=nj.getHours()+nj.getMinutes()/60,nn=nh<6?nh+24:nh;
-  an.now={type:'line',scaleID:'x',value:nn,borderColor:'rgba(255,80,80,.8)',borderWidth:2,borderDash:[4,3],
-    label:{content:`Now ${String(nj.getHours()).padStart(2,'0')}:${String(nj.getMinutes()).padStart(2,'0')}`,
-      display:true,position:'start',color:'#ff5050',font:{size:10},backgroundColor:'rgba(0,0,0,.7)'}};
+  // ── Gantt ──────────────────────────────────────────────────────────
+  // Chart.js 4.x Bar での破線は segment/scriptable options で実装
+  const COLORS={
+    '赤羽ルーム':{solid:'rgba(224,85,85,.75)',faded:'rgba(224,85,85,.2)',border:'#e05555'},
+    '蕨ルーム'  :{solid:'rgba(85,153,224,.75)',faded:'rgba(85,153,224,.2)',border:'#5599e0'},
+  };
+  const DEFAULT_C=COLORS['赤羽ルーム'];
 
-  activeRec.forEach(r=>{
-    const c=C[r.location]||C['赤羽ルーム'];
+  // activeRec に加えて満了スタッフも表示（バーなしラベルは除外）
+  const ganttRec=activeRec.filter(r=>{
+    // 時刻取得試行
     const sn=shSnap[r.therapist_id];
-    const sT=r.start_time||(sn?sn.start:null),eT=r.end_time||(sn?sn.end:null);
-    const sv=r2f(sT),ev=r2f(eT),bAt=bkdF[r.therapist_id];
+    const sT=r.start_time||(sn?sn.start:null);
+    const eT=r.end_time||(sn?sn.end:null);
+    return r2f(sT)!==null||r2f(eT)!==null||r.is_fully_booked===0;
+  });
+
+  const labels=ganttRec.map(r=>r.therapist_name);
+
+  // データセットA: 通常(solid)バー または 分割の前半
+  // データセットB: 満了後(faded)バー ＝ 分割の後半
+  const dsA={label:'出勤中', data:[], backgroundColor:[], borderColor:[], borderWidth:[], borderRadius:3, borderSkipped:false};
+  const dsB={label:'満了後', data:[], backgroundColor:[], borderColor:[], borderWidth:1, borderRadius:0, borderSkipped:false};
+  const dsM={label:'満了',   data:[], backgroundColor:[], borderColor:[], borderWidth:2, borderRadius:0, borderSkipped:false};
+  const an={};
+
+  const nj=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Tokyo'}));
+  const nh=nj.getHours()+nj.getMinutes()/60, nn=nh<6?nh+24:nh;
+  an.now={type:'line',scaleID:'x',value:nn,
+    borderColor:'rgba(255,80,80,.85)',borderWidth:2,borderDash:[5,4],
+    label:{content:`Now ${String(nj.getHours()).padStart(2,'0')}:${String(nj.getMinutes()).padStart(2,'0')}`,
+      display:true,position:'start',color:'#ff6060',font:{size:10},backgroundColor:'rgba(0,0,0,.75)'}};
+
+  ganttRec.forEach(r=>{
+    const c=COLORS[r.location]||DEFAULT_C;
+    const sn=shSnap[r.therapist_id];
+    const sT=r.start_time||(sn?sn.start:null);
+    const eT=r.end_time  ||(sn?sn.end  :null);
+    const sv=r2f(sT), ev=r2f(eT), bAt=bkdF[r.therapist_id];
+
     if(!r.is_fully_booked){
-      sd.push(sv&&ev?[sv,ev]:null);sdb.push(c.s);sdc.push(c.sb);
-      fd.push(null);fdb.push('');fdc.push('');md.push(null);mdb.push('');mdc.push('');
+      // 通常出勤
+      dsA.data.push(sv!=null&&ev!=null?[sv,ev]:null);
+      dsA.backgroundColor.push(c.solid); dsA.borderColor.push(c.border); dsA.borderWidth.push(1);
+      dsB.data.push(null); dsB.backgroundColor.push('transparent'); dsB.borderColor.push('transparent');
+      dsM.data.push(null); dsM.backgroundColor.push('transparent'); dsM.borderColor.push('transparent');
     } else {
-      const ok=sv!==null&&ev!==null&&bAt!=null&&bAt>sv&&bAt<ev;
-      if(ok){
-        sd.push([sv,bAt]);sdb.push(c.s);sdc.push(c.sb);
-        fd.push([bAt,ev]);fdb.push(c.f);fdc.push(c.fb);
-        md.push([bAt-.05,bAt+.05]);mdb.push('rgba(255,55,55,.95)');mdc.push('#f33');
-        an['b'+r.therapist_id]={type:'label',xValue:bAt,yValue:r.therapist_name,
-          content:[`${bkdStr[r.therapist_id]} 満了`],color:'#ff8080',font:{size:9,weight:'bold'},
-          yAdjust:-14,backgroundColor:'rgba(0,0,0,.75)',padding:{top:2,bottom:2,left:4,right:4},borderRadius:3};
-      } else if(sv!==null&&ev!==null){
-        sd.push(null);sdb.push('');sdc.push('');
-        fd.push([sv,ev]);fdb.push(c.f);fdc.push(c.fb);
-        md.push(null);mdb.push('');mdc.push('');
+      const splitOk = sv!=null && ev!=null && bAt!=null && bAt>sv && bAt<ev;
+      if(splitOk){
+        // 分割: solid前半 + faded後半 + 赤マーカー
+        dsA.data.push([sv, bAt]);
+        dsA.backgroundColor.push(c.solid); dsA.borderColor.push(c.border); dsA.borderWidth.push(1);
+        dsB.data.push([bAt, ev]);
+        dsB.backgroundColor.push(c.faded); dsB.borderColor.push(c.border);
+        dsM.data.push([bAt-0.04, bAt+0.04]);
+        dsM.backgroundColor.push('rgba(255,50,50,.95)'); dsM.borderColor.push('#ff3333');
+        an['b'+r.therapist_id]={
+          type:'label', xValue:bAt, yValue:r.therapist_name,
+          content:[`${bkdStr[r.therapist_id]} 満了`],
+          color:'#ff9090', font:{size:9,weight:'bold'}, yAdjust:-13,
+          backgroundColor:'rgba(0,0,0,.78)', padding:{top:2,bottom:2,left:5,right:5}, borderRadius:3,
+        };
+      } else if(sv!=null && ev!=null){
+        // 時刻あり・遷移なし → 全体faded
+        dsA.data.push(null); dsA.backgroundColor.push('transparent'); dsA.borderColor.push('transparent'); dsA.borderWidth.push(0);
+        dsB.data.push([sv,ev]); dsB.backgroundColor.push(c.faded); dsB.borderColor.push(c.border);
+        dsM.data.push(null); dsM.backgroundColor.push('transparent'); dsM.borderColor.push('transparent');
       } else {
-        sd.push(null);sdb.push('');sdc.push('');fd.push(null);fdb.push('');fdc.push('');md.push(null);mdb.push('');mdc.push('');
+        // 時刻不明 → 全体を灰色でOPEN枠として表示
+        dsA.data.push(null); dsA.backgroundColor.push('transparent'); dsA.borderColor.push('transparent'); dsA.borderWidth.push(0);
+        dsB.data.push(null); dsB.backgroundColor.push('transparent'); dsB.borderColor.push('transparent');
+        dsM.data.push(null); dsM.backgroundColor.push('transparent'); dsM.borderColor.push('transparent');
       }
     }
   });
 
   document.getElementById('ganttLegend').innerHTML=`
-    <div class="gl-i"><div class="gl-s" style="background:rgba(224,85,85,.72);border:1px solid #e05555"></div>赤羽（空き）</div>
-    <div class="gl-i"><div class="gl-s" style="background:rgba(85,153,224,.72);border:1px solid #5599e0"></div>蕨（空き）</div>
-    <div class="gl-i"><div class="gl-s" style="background:rgba(224,85,85,.18);border:1.5px dashed rgba(224,85,85,.6)"></div>満了後</div>
-    <div class="gl-i"><div class="gl-s" style="background:rgba(255,55,55,.95)"></div>満了時刻</div>`;
-  document.getElementById('ganttChart').style.height=Math.max(200,labels.length*34)+'px';
-  new Chart(document.getElementById('ganttChart').getContext('2d'),{type:'bar',data:{labels,datasets:[
-    {label:'出勤中',data:sd,backgroundColor:sdb,borderColor:sdc,borderWidth:1,borderRadius:3,borderSkipped:false,order:3},
-    {label:'満了後',data:fd,backgroundColor:fdb,borderColor:fdc,borderWidth:1.5,borderDash:[5,4],borderRadius:0,borderSkipped:false,order:3},
-    {label:'満了', data:md,backgroundColor:mdb,borderColor:mdc,borderWidth:2,borderRadius:0,borderSkipped:false,order:1},
-  ]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},
-      tooltip:{callbacks:{title:c=>c[0]?.label||'',label:c=>{const v=c.raw;if(!Array.isArray(v))return'';return`${c.dataset.label}: ${f2d(v[0])}〜${f2d(v[1])}`}}},
-      annotation:{annotations:an}},
-    scales:{x:{min:10,max:29,ticks:{color:'#7a7a90',stepSize:2,callback:v=>{const h=v>=24?v-24:v;return`${v>=24?'翌':''}${String(h).padStart(2,'0')}:00`}},grid:{color:'#2a2a35'}},
-            y:{ticks:{color:'#e8e8f0',font:{size:11}},grid:{display:false}}}}});
-})();
+    <div class="gl-i"><div class="gl-s" style="background:rgba(224,85,85,.75)"></div>赤羽（空き）</div>
+    <div class="gl-i"><div class="gl-s" style="background:rgba(85,153,224,.75)"></div>蕨（空き）</div>
+    <div class="gl-i"><div class="gl-s" style="background:rgba(224,85,85,.2);border:1px solid #e05555"></div>満了後</div>
+    <div class="gl-i"><div class="gl-s" style="background:rgba(255,50,50,.95)"></div>満了時刻</div>`;
+
+  const ganttH=Math.max(200,ganttRec.length*36);
+  document.getElementById('ganttChart').style.height=ganttH+'px';
+
+  new Chart(document.getElementById('ganttChart').getContext('2d'),{
+    type:'bar',
+    data:{labels, datasets:[
+      {label:'出勤中', data:dsA.data, backgroundColor:dsA.backgroundColor, borderColor:dsA.borderColor, borderWidth:dsA.borderWidth, borderRadius:3, borderSkipped:false, order:3},
+      {label:'満了後', data:dsB.data, backgroundColor:dsB.backgroundColor, borderColor:dsB.borderColor, borderWidth:1,             borderRadius:0, borderSkipped:false, order:3},
+      {label:'満了',   data:dsM.data, backgroundColor:dsM.backgroundColor, borderColor:dsM.borderColor, borderWidth:2,             borderRadius:0, borderSkipped:false, order:1},
+    ]},
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          title:ctx=>ctx[0]?.label||'',
+          label:ctx=>{const v=ctx.raw;if(!Array.isArray(v))return'';return`${ctx.dataset.label}: ${f2d(v[0])}〜${f2d(v[1])}`},
+        }},
+        annotation:{annotations:an},
+      },
+      scales:{
+        x:{min:10,max:29,
+          ticks:{color:'#7a7a90',stepSize:2,
+            callback:v=>{const h=v>=24?v-24:v;return`${v>=24?'翌':''}${String(h).padStart(2,'0')}:00`}},
+          grid:{color:'#2a2a35'}},
+        y:{ticks:{color:'#e8e8f0',font:{size:11}},grid:{display:false}},
+      },
+    },
+  });
 
 // ── WEEKLY ────────────────────────────────────────────────────────────────
 (function(){
