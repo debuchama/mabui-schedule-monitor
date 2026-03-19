@@ -2,7 +2,7 @@
 export_data.py — SQLite → dashboard_data.json エクスポート
 """
 import sys, os, json, logging
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta, datetime, timezone
 
 sys.path.insert(0, os.path.dirname(__file__))
 from db_setup import get_connection, DB_PATH
@@ -15,12 +15,19 @@ FAVORITES_JSON = os.path.join(DATA_DIR, 'favorites.json')
 def q(conn, sql, params=()):
     return [dict(r) for r in conn.execute(sql, params).fetchall()]
 
+JST = timezone(timedelta(hours=9))
+
+def today_jst():
+    """GitHub Actions (UTC) 環境でも JST の日付を返す"""
+    return datetime.now(JST).date()
+
 def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
     conn        = get_connection(db_path)
-    today       = date.today().isoformat()
-    week_dates  = [(date.today() + timedelta(days=i)).isoformat() for i in range(7)]
-    past30      = (date.today() - timedelta(days=30)).isoformat()
-    past7       = (date.today() - timedelta(days=7)).isoformat()
+    _today      = today_jst()
+    today       = _today.isoformat()
+    week_dates  = [(_today + timedelta(days=i)).isoformat() for i in range(7)]
+    past30      = (_today - timedelta(days=30)).isoformat()
+    past7       = (_today - timedelta(days=7)).isoformat()
 
     # 1. therapists
     therapists = q(conn, "SELECT * FROM therapists WHERE is_active=1 ORDER BY name")
@@ -108,7 +115,7 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
             SELECT therapist_id, schedule_date, checked_at AS booked_at
             FROM ranked WHERE status='fully_booked' AND rn=1
         ),
-        -- シフト開始時刻をfloat(h)に変換: 深夜(0〜5時)は+24して正規化
+        -- シフト開始・終了時刻をfloat(h)に変換: 深夜(0〜5時)は+24して正規化
         shift_h AS (
             SELECT therapist_id, schedule_date,
                    CASE
@@ -118,7 +125,15 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
                             + CAST(SUBSTR(start_time,4,2) AS INTEGER) / 60.0
                      ELSE CAST(SUBSTR(start_time,1,2) AS INTEGER)
                           + CAST(SUBSTR(start_time,4,2) AS INTEGER) / 60.0
-                   END AS shift_start_h
+                   END AS shift_start_h,
+                   CASE
+                     WHEN end_time IS NULL THEN NULL
+                     WHEN CAST(SUBSTR(end_time,1,2) AS INTEGER) < 6
+                       THEN CAST(SUBSTR(end_time,1,2) AS INTEGER) + 24
+                            + CAST(SUBSTR(end_time,4,2) AS INTEGER) / 60.0
+                     ELSE CAST(SUBSTR(end_time,1,2) AS INTEGER)
+                          + CAST(SUBSTR(end_time,4,2) AS INTEGER) / 60.0
+                   END AS shift_end_h
             FROM daily_schedules
         )
         SELECT fa.therapist_id, t.name,
@@ -148,11 +163,20 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
         JOIN therapists t ON t.therapist_id=fa.therapist_id
         LEFT JOIN shift_h sh ON sh.therapist_id=fa.therapist_id AND sh.schedule_date=fa.schedule_date
         WHERE
-          -- 除外: booked_at がシフト開始の1時間以上前（事前予約）
-          sh.shift_start_h IS NULL
-          OR (
-            CAST(SUBSTR(fb.booked_at,12,2) AS REAL) + CAST(SUBSTR(fb.booked_at,15,2) AS REAL)/60.0
-          ) >= sh.shift_start_h - 1.0
+          -- 除外1: booked_at がシフト開始の1時間以上前（事前予約）
+          -- 除外2: booked_at がシフト終了の90分以内（最短コース時間 = 擬似満了の疑い）
+          (
+            sh.shift_start_h IS NULL
+            OR (
+              CAST(SUBSTR(fb.booked_at,12,2) AS REAL) + CAST(SUBSTR(fb.booked_at,15,2) AS REAL)/60.0
+            ) >= sh.shift_start_h - 1.0
+          )
+          AND (
+            sh.shift_end_h IS NULL
+            OR (
+              CAST(SUBSTR(fb.booked_at,12,2) AS REAL) + CAST(SUBSTR(fb.booked_at,15,2) AS REAL)/60.0
+            ) < sh.shift_end_h - 90/60.0
+          )
         GROUP BY fa.therapist_id
         HAVING booked_days >= 1
         ORDER BY avg_hours_to_book ASC
@@ -308,7 +332,7 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
     conn.close()
 
     payload = {
-        'generated_at'          : datetime.now().isoformat(),
+        'generated_at'          : datetime.now(JST).isoformat(),
         'today'                 : today,
         'week_dates'            : week_dates,
         'therapists'            : therapists,
