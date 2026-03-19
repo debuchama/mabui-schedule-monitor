@@ -242,20 +242,44 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
   const favs=DATA.favorites_config;if(!favs.length)return;
   document.getElementById('favBanner').style.display='';
   const today=DATA.today;
-  const todayMap=Object.fromEntries(DATA.favorites_schedule.filter(s=>s.schedule_date===today).map(s=>[s.therapist_id,s]));
+  // 今日の出勤データ（サイトは当日分のみ確定のため weekly_schedules から今日分のみ参照）
+  const todayMap=Object.fromEntries(
+    DATA.weekly_schedules.filter(s=>s.schedule_date===today).map(s=>[s.therapist_id,s])
+  );
+  // スナップショットから満了時刻・最新ステータスを取得
+  // today_snapshots は checked_at 昇順なので後から上書きすれば最新になる
+  const bkdStr={}, lastStatusMap={};
+  DATA.today_snapshots.forEach(s=>{
+    if(s.status==='fully_booked'&&!bkdStr[s.therapist_id])
+      bkdStr[s.therapist_id]=s.checked_at.slice(11,16);
+    lastStatusMap[s.therapist_id]=s.status; // 最後に処理したものが最新
+  });
+  const endedSet=new Set(Object.entries(lastStatusMap).filter(([,v])=>v==='shift_ended').map(([k])=>+k));
+
   document.getElementById('favCards').innerHTML=favs.map(f=>{
     const sch=todayMap[f.therapist_id];
-    const badge=sch?'<span class="td-badge">TODAY</span>':'';
-    const tStr=sch?(sch.is_fully_booked?` <span style="color:var(--booked);font-size:.7rem">【満了】</span>`
-      :` <span style="color:var(--muted);font-size:.72rem">${dt(sch.start_time)}〜${dt(sch.end_time)}</span>`):'';
-    const dates=DATA.favorites_schedule.filter(s=>s.therapist_id===f.therapist_id).map(s=>{
-      const d=['日','月','火','水','木','金','土'][new Date(s.schedule_date).getDay()];
-      return s.schedule_date.slice(5).replace('-','/')+'('+d+')'+(s.is_fully_booked?'🔴':'');
-    }).join(', ');
-    return`<div class="fc-item">${badge}<span>${tl(f.therapist_id,f.name)}</span>${tStr}<span style="color:var(--muted);font-size:.71rem">${dates||'No schedule'}</span></div>`;
+    const ended=endedSet.has(f.therapist_id);
+    let badge='',timeTag='',rowStyle='';
+    if(ended){
+      badge=`<span class="td-badge" style="background:var(--muted)">終了</span>`;
+      const snap=DATA.today_snapshots.find(s=>s.therapist_id===f.therapist_id&&s.status==='shift_ended');
+      timeTag=`<span style="color:var(--muted);font-size:.72rem">${snap?snap.checked_at.slice(11,16)+' 終了':''}</span>`;
+      rowStyle='opacity:.6';
+    } else if(sch){
+      if(sch.is_fully_booked){
+        badge='<span class="td-badge">TODAY 満了</span>';
+        const bt=bkdStr[f.therapist_id];
+        timeTag=`<span style="color:var(--booked);font-size:.72rem">${bt?bt+' 満了':'予約満了'}</span>`;
+      } else {
+        badge='<span class="td-badge">TODAY</span>';
+        timeTag=`<span style="color:var(--avail);font-size:.72rem">${dt(sch.start_time)}〜${dt(sch.end_time)}</span>`;
+      }
+    } else {
+      timeTag=`<span style="color:var(--muted);font-size:.72rem">本日出勤なし</span>`;
+    }
+    return`<div class="fc-item" style="${rowStyle}">${badge}<span>${tl(f.therapist_id,f.name)}</span>${timeTag}</div>`;
   }).join('');
 })();
-
 // ── TODAY ─────────────────────────────────────────────────────────────────
 (function(){
   const today=DATA.today;
@@ -280,8 +304,8 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
   });
 
   // shift_ended の人を除外して active/ended に分ける
-  const activeRec=rec.filter(r=>lastStatus[r.therapist_id]!=='shift_ended');
-  const endedRec =rec.filter(r=>lastStatus[r.therapist_id]==='shift_ended');
+  const activeRec=rec.filter(r=>lastStatusMap[r.therapist_id]!=='shift_ended');
+  const endedRec =rec.filter(r=>lastStatusMap[r.therapist_id]==='shift_ended');
 
   // メトリクスは active のみでカウント
   const actTotal=activeRec.length,actBkd=activeRec.filter(s=>s.is_fully_booked).length;
@@ -490,12 +514,26 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
     const rk=rankMap[f.therapist_id];
     const tags=parseTags(st.tags).slice(0,4).map(t=>`<span style="font-size:.68rem;background:var(--surface2);padding:1px 6px;border-radius:8px;border:1px solid var(--border)">${t}</span>`).join(' ');
     const rankTag=rk?`<span class="spd ${spd(rk.avg_hours_to_book)[0]}">${spd(rk.avg_hours_to_book)[1]}</span> 平均${rk.avg_hours_to_book}hで満了`:'データ蓄積中';
-    const weekSch=DATA.favorites_schedule.filter(s=>s.therapist_id===f.therapist_id);
-    const schRows=weekSch.map(s=>{
-      const d=['日','月','火','水','木','金','土'][new Date(s.schedule_date).getDay()];
-      const t=s.is_fully_booked?'<span style="color:var(--booked)">【満了】</span>':`${dt(s.start_time)}〜${dt(s.end_time)}`;
-      return`<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--border);font-size:.78rem"><span>${s.schedule_date.slice(5).replace('-','/')}(${d})</span><span>${t}</span></div>`;
-    }).join('')||'<div class="nd" style="padding:8px">今週の出勤なし</div>';
+    // 今日の出勤のみ信頼できる
+    const todaySch=DATA.weekly_schedules.filter(s=>s.therapist_id===f.therapist_id&&s.schedule_date===DATA.today);
+    const bkdStrFav={}, lastStFav={};
+    DATA.today_snapshots.forEach(s=>{
+      if(s.status==='fully_booked'&&!bkdStrFav[s.therapist_id])bkdStrFav[s.therapist_id]=s.checked_at.slice(11,16);
+      lastStFav[s.therapist_id]=s.status;
+    });
+    const endedFav=new Set(Object.entries(lastStFav).filter(([,v])=>v==='shift_ended').map(([k])=>+k));
+    const schRows=todaySch.map(s=>{
+      let tStr;
+      if(endedFav.has(s.therapist_id)){
+        tStr='<span style="color:var(--muted)">シフト終了</span>';
+      } else if(s.is_fully_booked){
+        const bt=bkdStrFav[s.therapist_id];
+        tStr=`<span style="color:var(--booked)">${bt?bt+' 満了':'予約満了'}</span>`;
+      } else {
+        tStr=`${dt(s.start_time)}〜${dt(s.end_time)}`;
+      }
+      return`<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--border);font-size:.78rem"><span>今日(${['日','月','火','水','木','金','土'][new Date(s.schedule_date).getDay()]})</span><span>${tStr}</span></div>`;
+    }).join('')||'<div class="nd" style="padding:8px">本日出勤なし</div>';
     return`<div class="fav-card2">
       <div class="fname">${tl(f.therapist_id,f.name)}</div>
       <div style="margin-bottom:8px;display:flex;gap:6px;flex-wrap:wrap">${tags}</div>
