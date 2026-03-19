@@ -79,7 +79,7 @@ def run_once(db_path=DB_PATH):
     conn  = get_connection(db_path)
     cur   = conn.cursor()
     at    = now_jst()
-    today = date.today().isoformat()
+    today = datetime.now(JST).date().isoformat()
 
     records   = scrape_today()
     scraped_ids = {r['therapist_id'] for r in records}
