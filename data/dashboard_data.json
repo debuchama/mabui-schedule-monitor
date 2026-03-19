@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T07:49:46.636630+09:00",
+  "generated_at": "2026-03-20T07:56:41.970825+09:00",
   "today": "2026-03-20",
   "week_dates": [
     "2026-03-20",
@@ -443,37 +443,7 @@
   ],
   "weekly_schedules": [
     {
-      "id": 50,
-      "therapist_id": 193,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "10:00",
-      "end_time": "21:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-16 15:19:23",
-      "therapist_name": "冬月",
-      "age": 41,
-      "height_cm": 153,
-      "cup_size": "C",
-      "tags": null
-    },
-    {
-      "id": 52,
-      "therapist_id": 4,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "10:00",
-      "end_time": "18:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "高橋",
-      "age": 30,
-      "height_cm": 163,
-      "cup_size": "F",
-      "tags": null
-    },
-    {
-      "id": 224,
+      "id": 931,
       "therapist_id": 111,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -488,22 +458,7 @@
       "tags": "[\"３０代オトナ女子\", \"イタズラ好き\", \"指名本数上位\", \"これぞ究極の癒し!!\", \"事前予約必須\"]"
     },
     {
-      "id": 630,
-      "therapist_id": 167,
-      "schedule_date": "2026-03-20",
-      "location": "蕨ルーム",
-      "start_time": "10:00",
-      "end_time": "16:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "陽ノ宮",
-      "age": 41,
-      "height_cm": 155,
-      "cup_size": "E",
-      "tags": "[\"４０代オトナ女子\", \"慈愛に満ちた笑顔\", \"釘付け間違いナシ\", \"才色兼備\"]"
-    },
-    {
-      "id": 830,
+      "id": 932,
       "therapist_id": 129,
       "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
@@ -518,67 +473,7 @@
       "tags": "[\"３０代オトナ女子\", \"真心たーっぷり\", \"均整取れた美しさ\", \"男のロマン♪\"]"
     },
     {
-      "id": 215,
-      "therapist_id": 185,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "10:30",
-      "end_time": "22:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "白雪",
-      "age": 30,
-      "height_cm": 150,
-      "cup_size": "E",
-      "tags": null
-    },
-    {
-      "id": 49,
-      "therapist_id": 169,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "11:00",
-      "end_time": "21:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "五野上",
-      "age": 36,
-      "height_cm": 150,
-      "cup_size": "C",
-      "tags": "[\"３０代オトナ女子\", \"美オーラ♡\", \"濃密な２人だけの時間♡\", \"甘く攻める小悪魔な指先\", \"麗らかで美艶\"]"
-    },
-    {
-      "id": 51,
-      "therapist_id": 78,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "11:00",
-      "end_time": "18:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "春名",
-      "age": 35,
-      "height_cm": 166,
-      "cup_size": "F",
-      "tags": "[\"３０代オトナ女子\", \"丁寧で接客レベチ\", \"ホスピタリティ溢れてます\", \"穏和に尽くす\"]"
-    },
-    {
-      "id": 634,
-      "therapist_id": 186,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "11:00",
-      "end_time": "16:30",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "蒼井",
-      "age": 41,
-      "height_cm": 158,
-      "cup_size": "B",
-      "tags": "[\"無邪気な笑顔と大人びた魅力\", \"繊細かつ可憐な姿\", \"おもてなし力♡\"]"
-    },
-    {
-      "id": 831,
+      "id": 933,
       "therapist_id": 196,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -593,7 +488,7 @@
       "tags": "[\"３０代オトナ女子\", \"夢中にさせちゃうぞ♡\", \"癒しクイーン\"]"
     },
     {
-      "id": 832,
+      "id": 934,
       "therapist_id": 191,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -608,7 +503,7 @@
       "tags": "[\"視線♡奪われる\", \"20代オトナ女子\", \"ホスピタリティ溢れてます\"]"
     },
     {
-      "id": 833,
+      "id": 935,
       "therapist_id": 29,
       "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
@@ -623,37 +518,7 @@
       "tags": "[\"４０代オトナ女子\", \"豊満body\", \"病みつきになります！\", \"包み込む優しさ\"]"
     },
     {
-      "id": 218,
-      "therapist_id": 85,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "12:00",
-      "end_time": "18:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "夏川",
-      "age": 35,
-      "height_cm": 154,
-      "cup_size": "D",
-      "tags": null
-    },
-    {
-      "id": 635,
-      "therapist_id": 150,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "12:00",
-      "end_time": "19:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "琴音",
-      "age": 33,
-      "height_cm": 153,
-      "cup_size": "D",
-      "tags": "[\"３０代オトナ女子\", \"Cuteな実力者\", \"吐息が伝わる距離感\", \"記憶に残るおもてなし\"]"
-    },
-    {
-      "id": 834,
+      "id": 936,
       "therapist_id": 60,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -668,7 +533,7 @@
       "tags": "[\"３０代オトナ女子\", \"美脚♡美人\", \"人一倍強い癒し\", \"甘く攻める小悪魔な指先\"]"
     },
     {
-      "id": 53,
+      "id": 937,
       "therapist_id": 7,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -683,22 +548,7 @@
       "tags": "[\"３０代オトナ女子\", \"伝説級の美尻\", \"夜の彼女\", \"FカップはフルーティーのF\"]"
     },
     {
-      "id": 636,
-      "therapist_id": 172,
-      "schedule_date": "2026-03-20",
-      "location": "蕨ルーム",
-      "start_time": "14:00",
-      "end_time": "24:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "川村",
-      "age": 32,
-      "height_cm": 143,
-      "cup_size": "F",
-      "tags": "[\"３０代オトナ女子\", \"ギャップ施術に翻弄♡\", \"女性らしい曲線美\", \"萌えあがるマブイ淑女\"]"
-    },
-    {
-      "id": 217,
+      "id": 938,
       "therapist_id": 50,
       "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
@@ -713,52 +563,7 @@
       "tags": "[\"４０代オトナ女子\", \"華奢な美魔女\", \"癒し♡おっとり\"]"
     },
     {
-      "id": 219,
-      "therapist_id": 17,
-      "schedule_date": "2026-03-20",
-      "location": "蕨ルーム",
-      "start_time": "17:00",
-      "end_time": "23:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "一ノ瀬",
-      "age": 30,
-      "height_cm": 159,
-      "cup_size": "E",
-      "tags": null
-    },
-    {
-      "id": 220,
-      "therapist_id": 141,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "17:00",
-      "end_time": "22:30",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "綾野",
-      "age": 38,
-      "height_cm": 164,
-      "cup_size": "D",
-      "tags": null
-    },
-    {
-      "id": 54,
-      "therapist_id": 63,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "17:30",
-      "end_time": "23:30",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "愛沢",
-      "age": 38,
-      "height_cm": 163,
-      "cup_size": "F",
-      "tags": "[\"３０代オトナ女子\", \"圧倒的♡施術\", \"フェロモンダダ漏れ\"]"
-    },
-    {
-      "id": 837,
+      "id": 939,
       "therapist_id": 199,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -773,7 +578,7 @@
       "tags": "[\"屈指のない笑顔\", \"魅力的な感性\", \"慈愛に満ちた笑顔\", \"20代オトナ女子\"]"
     },
     {
-      "id": 55,
+      "id": 940,
       "therapist_id": 5,
       "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
@@ -788,22 +593,7 @@
       "tags": "[\"３０代オトナ女子\", \"業界殿堂入り\", \"乳神様が宿ってる\", \"高リピート率\"]"
     },
     {
-      "id": 638,
-      "therapist_id": 205,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "19:00",
-      "end_time": "28:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "西沢",
-      "age": 35,
-      "height_cm": 159,
-      "cup_size": "D",
-      "tags": "[\"３０代オトナ女子\", \"優しい雰囲気\", \"愛嬌☆魅力的\", \"色気抜群\"]"
-    },
-    {
-      "id": 839,
+      "id": 941,
       "therapist_id": 81,
       "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
@@ -818,7 +608,7 @@
       "tags": "[\"超要注目セラピ\", \"20代オトナ女子\", \"マッサージもお上手♡\", \"繊細かつ可憐な姿\"]"
     },
     {
-      "id": 840,
+      "id": 942,
       "therapist_id": 138,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -833,7 +623,7 @@
       "tags": "[\"３０代オトナ女子\", \"可愛さと美しさの両立\", \"心地よいひと時お約束\", \"アンニュイな雰囲気\", \"逸材襲来 ‼\"]"
     },
     {
-      "id": 57,
+      "id": 943,
       "therapist_id": 165,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -848,22 +638,7 @@
       "tags": "[\"３０代オトナ女子\", \"親しみやすい性格\", \"心に響く癒し系♡\", \"微笑みの天使\", \"ハマらず居られるか？！\"]"
     },
     {
-      "id": 221,
-      "therapist_id": 90,
-      "schedule_date": "2026-03-20",
-      "location": "蕨ルーム",
-      "start_time": "20:00",
-      "end_time": "24:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "矢野",
-      "age": 38,
-      "height_cm": 169,
-      "cup_size": "E",
-      "tags": null
-    },
-    {
-      "id": 222,
+      "id": 944,
       "therapist_id": 27,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -878,7 +653,7 @@
       "tags": "[\"無邪気な笑顔と大人びた魅力\", \"甘ーく可愛い\", \"20代オトナ女子\"]"
     },
     {
-      "id": 56,
+      "id": 945,
       "therapist_id": 180,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -893,52 +668,7 @@
       "tags": "[\"４０代オトナ女子\", \"万感の包容力\", \"綺麗な瞳\", \"フェロモンむんむん\"]"
     },
     {
-      "id": 223,
-      "therapist_id": 66,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": "23:00",
-      "end_time": "29:00",
-      "is_fully_booked": 0,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "平山",
-      "age": 38,
-      "height_cm": 160,
-      "cup_size": "E",
-      "tags": null
-    },
-    {
-      "id": 58,
-      "therapist_id": 158,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null,
-      "is_fully_booked": 1,
-      "scraped_at": "2026-03-16 15:19:23",
-      "therapist_name": "愛咲",
-      "age": 40,
-      "height_cm": 152,
-      "cup_size": "I",
-      "tags": null
-    },
-    {
-      "id": 59,
-      "therapist_id": 46,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null,
-      "is_fully_booked": 1,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "西島",
-      "age": 34,
-      "height_cm": 162,
-      "cup_size": "E",
-      "tags": "[\"３０代オトナ女子\", \"圧倒的リピート率\", \"美女☆エース\", \"殿のお悦び\", \"事前予約必須\"]"
-    },
-    {
-      "id": 60,
+      "id": 946,
       "therapist_id": 48,
       "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
@@ -953,7 +683,7 @@
       "tags": "[\"３０代オトナ女子\", \"夢中にさせちゃうぞ♡\", \"美人魔術師\", \"華奢×爆乳\", \"事前予約必須\"]"
     },
     {
-      "id": 225,
+      "id": 947,
       "therapist_id": 100,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -966,66 +696,6 @@
       "height_cm": 160,
       "cup_size": "F",
       "tags": "[\"３０代オトナ女子\", \"圧倒的リピート率\", \"夢中にさせちゃうぞ♡\", \"萌えあがるマブイ淑女\", \"事前予約必須\"]"
-    },
-    {
-      "id": 226,
-      "therapist_id": 18,
-      "schedule_date": "2026-03-20",
-      "location": "蕨ルーム",
-      "start_time": null,
-      "end_time": null,
-      "is_fully_booked": 1,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "高柳",
-      "age": 30,
-      "height_cm": 160,
-      "cup_size": "G",
-      "tags": null
-    },
-    {
-      "id": 227,
-      "therapist_id": 147,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null,
-      "is_fully_booked": 1,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "一杉",
-      "age": 35,
-      "height_cm": 155,
-      "cup_size": "C",
-      "tags": null
-    },
-    {
-      "id": 228,
-      "therapist_id": 155,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null,
-      "is_fully_booked": 1,
-      "scraped_at": "2026-03-18 09:11:38",
-      "therapist_name": "権田原",
-      "age": 35,
-      "height_cm": 165,
-      "cup_size": "H",
-      "tags": null
-    },
-    {
-      "id": 641,
-      "therapist_id": 110,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null,
-      "is_fully_booked": 1,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "佐伯",
-      "age": 33,
-      "height_cm": 153,
-      "cup_size": "G",
-      "tags": "[\"３０代オトナ女子\", \"殿方歓喜Gカップ美女\", \"上品な雰囲気\", \"これぞ究極の癒し!!\", \"事前予約必須\"]"
     },
     {
       "id": 62,
@@ -3567,14 +3237,14 @@
     {
       "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
-      "staff_count": 11,
-      "booked_count": 2
+      "staff_count": 6,
+      "booked_count": 1
     },
     {
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
-      "staff_count": 28,
-      "booked_count": 6
+      "staff_count": 11,
+      "booked_count": 1
     },
     {
       "schedule_date": "2026-03-21",
@@ -3642,15 +3312,15 @@
       "therapist_id": 180,
       "name": "橘",
       "tags": "[\"４０代オトナ女子\", \"万感の包容力\", \"綺麗な瞳\", \"フェロモンむんむん\"]",
-      "shift_count": 10,
-      "avg_hours": 5.8,
+      "shift_count": 9,
+      "avg_hours": 5.83,
       "locations": "赤羽ルーム"
     },
     {
       "therapist_id": 48,
       "name": "水原",
       "tags": "[\"３０代オトナ女子\", \"夢中にさせちゃうぞ♡\", \"美人魔術師\", \"華奢×爆乳\", \"事前予約必須\"]",
-      "shift_count": 10,
+      "shift_count": 9,
       "avg_hours": 4.0,
       "locations": "蕨ルーム"
     },
@@ -3658,15 +3328,15 @@
       "therapist_id": 5,
       "name": "梅澤",
       "tags": "[\"３０代オトナ女子\", \"業界殿堂入り\", \"乳神様が宿ってる\", \"高リピート率\"]",
-      "shift_count": 10,
-      "avg_hours": 6.3,
+      "shift_count": 9,
+      "avg_hours": 6.33,
       "locations": "蕨ルーム"
     },
     {
       "therapist_id": 165,
       "name": "優木",
       "tags": "[\"３０代オトナ女子\", \"親しみやすい性格\", \"心に響く癒し系♡\", \"微笑みの天使\", \"ハマらず居られるか？！\"]",
-      "shift_count": 9,
+      "shift_count": 8,
       "avg_hours": 4.0,
       "locations": "赤羽ルーム"
     },
@@ -3674,15 +3344,15 @@
       "therapist_id": 7,
       "name": "月野",
       "tags": "[\"３０代オトナ女子\", \"伝説級の美尻\", \"夜の彼女\", \"FカップはフルーティーのF\"]",
-      "shift_count": 9,
-      "avg_hours": 9.33,
+      "shift_count": 8,
+      "avg_hours": 9.25,
       "locations": "蕨ルーム,赤羽ルーム"
     },
     {
       "therapist_id": 169,
       "name": "五野上",
       "tags": "[\"３０代オトナ女子\", \"美オーラ♡\", \"濃密な２人だけの時間♡\", \"甘く攻める小悪魔な指先\", \"麗らかで美艶\"]",
-      "shift_count": 8,
+      "shift_count": 7,
       "avg_hours": 10.0,
       "locations": "赤羽ルーム"
     },
@@ -3690,7 +3360,7 @@
       "therapist_id": 111,
       "name": "岩崎",
       "tags": "[\"３０代オトナ女子\", \"イタズラ好き\", \"指名本数上位\", \"これぞ究極の癒し!!\", \"事前予約必須\"]",
-      "shift_count": 8,
+      "shift_count": 7,
       "avg_hours": 7.0,
       "locations": "赤羽ルーム"
     },
@@ -3698,7 +3368,7 @@
       "therapist_id": 100,
       "name": "三上",
       "tags": "[\"３０代オトナ女子\", \"圧倒的リピート率\", \"夢中にさせちゃうぞ♡\", \"萌えあがるマブイ淑女\", \"事前予約必須\"]",
-      "shift_count": 8,
+      "shift_count": 7,
       "avg_hours": null,
       "locations": "赤羽ルーム"
     },
@@ -3706,7 +3376,7 @@
       "therapist_id": 78,
       "name": "春名",
       "tags": "[\"３０代オトナ女子\", \"丁寧で接客レベチ\", \"ホスピタリティ溢れてます\", \"穏和に尽くす\"]",
-      "shift_count": 8,
+      "shift_count": 7,
       "avg_hours": 7.0,
       "locations": "赤羽ルーム,蕨ルーム"
     },
@@ -3714,23 +3384,23 @@
       "therapist_id": 63,
       "name": "愛沢",
       "tags": "[\"３０代オトナ女子\", \"圧倒的♡施術\", \"フェロモンダダ漏れ\"]",
-      "shift_count": 8,
-      "avg_hours": 5.88,
+      "shift_count": 7,
+      "avg_hours": 5.86,
       "locations": "赤羽ルーム"
     },
     {
       "therapist_id": 50,
       "name": "秋吉",
       "tags": "[\"４０代オトナ女子\", \"華奢な美魔女\", \"癒し♡おっとり\"]",
-      "shift_count": 8,
-      "avg_hours": 6.75,
+      "shift_count": 7,
+      "avg_hours": 6.71,
       "locations": "赤羽ルーム,蕨ルーム"
     },
     {
       "therapist_id": 46,
       "name": "西島",
       "tags": "[\"３０代オトナ女子\", \"圧倒的リピート率\", \"美女☆エース\", \"殿のお悦び\", \"事前予約必須\"]",
-      "shift_count": 8,
+      "shift_count": 7,
       "avg_hours": null,
       "locations": "赤羽ルーム"
     },
@@ -3738,7 +3408,7 @@
       "therapist_id": 27,
       "name": "切島",
       "tags": "[\"無邪気な笑顔と大人びた魅力\", \"甘ーく可愛い\", \"20代オトナ女子\"]",
-      "shift_count": 8,
+      "shift_count": 7,
       "avg_hours": 9.0,
       "locations": "赤羽ルーム"
     },
@@ -3746,7 +3416,7 @@
       "therapist_id": 199,
       "name": "七里",
       "tags": "[\"屈指のない笑顔\", \"魅力的な感性\", \"慈愛に満ちた笑顔\", \"20代オトナ女子\"]",
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 11.0,
       "locations": "赤羽ルーム"
     },
@@ -3754,7 +3424,7 @@
       "therapist_id": 196,
       "name": "加賀美",
       "tags": "[\"３０代オトナ女子\", \"夢中にさせちゃうぞ♡\", \"癒しクイーン\"]",
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 7.0,
       "locations": "赤羽ルーム"
     },
@@ -3762,7 +3432,7 @@
       "therapist_id": 191,
       "name": "梶木",
       "tags": "[\"視線♡奪われる\", \"20代オトナ女子\", \"ホスピタリティ溢れてます\"]",
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 9.0,
       "locations": "赤羽ルーム"
     },
@@ -3770,7 +3440,7 @@
       "therapist_id": 138,
       "name": "金沢",
       "tags": "[\"３０代オトナ女子\", \"可愛さと美しさの両立\", \"心地よいひと時お約束\", \"アンニュイな雰囲気\", \"逸材襲来 ‼\"]",
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 6.0,
       "locations": "赤羽ルーム"
     },
@@ -3778,7 +3448,7 @@
       "therapist_id": 129,
       "name": "真琴",
       "tags": "[\"３０代オトナ女子\", \"真心たーっぷり\", \"均整取れた美しさ\", \"男のロマン♪\"]",
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 8.0,
       "locations": "蕨ルーム"
     },
@@ -3786,7 +3456,7 @@
       "therapist_id": 81,
       "name": "新川",
       "tags": "[\"超要注目セラピ\", \"20代オトナ女子\", \"マッサージもお上手♡\", \"繊細かつ可憐な姿\"]",
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 10.0,
       "locations": "蕨ルーム"
     },
@@ -3794,7 +3464,7 @@
       "therapist_id": 60,
       "name": "花山",
       "tags": "[\"３０代オトナ女子\", \"美脚♡美人\", \"人一倍強い癒し\", \"甘く攻める小悪魔な指先\"]",
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 5.0,
       "locations": "赤羽ルーム"
     },
@@ -3802,7 +3472,7 @@
       "therapist_id": 29,
       "name": "桜",
       "tags": "[\"４０代オトナ女子\", \"豊満body\", \"病みつきになります！\", \"包み込む優しさ\"]",
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 7.0,
       "locations": "蕨ルーム"
     },
@@ -3810,7 +3480,7 @@
       "therapist_id": 4,
       "name": "高橋",
       "tags": null,
-      "shift_count": 7,
+      "shift_count": 6,
       "avg_hours": 8.0,
       "locations": "赤羽ルーム"
     },
@@ -3818,7 +3488,7 @@
       "therapist_id": 205,
       "name": "西沢",
       "tags": "[\"３０代オトナ女子\", \"優しい雰囲気\", \"愛嬌☆魅力的\", \"色気抜群\"]",
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 9.0,
       "locations": "赤羽ルーム"
     },
@@ -3826,7 +3496,7 @@
       "therapist_id": 186,
       "name": "蒼井",
       "tags": "[\"無邪気な笑顔と大人びた魅力\", \"繊細かつ可憐な姿\", \"おもてなし力♡\"]",
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 5.5,
       "locations": "赤羽ルーム"
     },
@@ -3834,7 +3504,7 @@
       "therapist_id": 185,
       "name": "白雪",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 11.5,
       "locations": "赤羽ルーム"
     },
@@ -3842,7 +3512,7 @@
       "therapist_id": 172,
       "name": "川村",
       "tags": "[\"３０代オトナ女子\", \"ギャップ施術に翻弄♡\", \"女性らしい曲線美\", \"萌えあがるマブイ淑女\"]",
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 10.0,
       "locations": "蕨ルーム"
     },
@@ -3850,7 +3520,7 @@
       "therapist_id": 167,
       "name": "陽ノ宮",
       "tags": "[\"４０代オトナ女子\", \"慈愛に満ちた笑顔\", \"釘付け間違いナシ\", \"才色兼備\"]",
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 6.0,
       "locations": "蕨ルーム"
     },
@@ -3858,7 +3528,7 @@
       "therapist_id": 155,
       "name": "権田原",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": null,
       "locations": "赤羽ルーム"
     },
@@ -3866,7 +3536,7 @@
       "therapist_id": 150,
       "name": "琴音",
       "tags": "[\"３０代オトナ女子\", \"Cuteな実力者\", \"吐息が伝わる距離感\", \"記憶に残るおもてなし\"]",
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 7.0,
       "locations": "赤羽ルーム"
     },
@@ -3874,7 +3544,7 @@
       "therapist_id": 147,
       "name": "一杉",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": null,
       "locations": "赤羽ルーム"
     },
@@ -3882,7 +3552,7 @@
       "therapist_id": 141,
       "name": "綾野",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 5.5,
       "locations": "赤羽ルーム"
     },
@@ -3890,7 +3560,7 @@
       "therapist_id": 110,
       "name": "佐伯",
       "tags": "[\"３０代オトナ女子\", \"殿方歓喜Gカップ美女\", \"上品な雰囲気\", \"これぞ究極の癒し!!\", \"事前予約必須\"]",
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": null,
       "locations": "赤羽ルーム"
     },
@@ -3898,7 +3568,7 @@
       "therapist_id": 90,
       "name": "矢野",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 4.0,
       "locations": "蕨ルーム"
     },
@@ -3906,7 +3576,7 @@
       "therapist_id": 85,
       "name": "夏川",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 6.0,
       "locations": "赤羽ルーム"
     },
@@ -3914,7 +3584,7 @@
       "therapist_id": 66,
       "name": "平山",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 6.0,
       "locations": "赤羽ルーム"
     },
@@ -3922,7 +3592,7 @@
       "therapist_id": 18,
       "name": "高柳",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": null,
       "locations": "蕨ルーム"
     },
@@ -3930,7 +3600,7 @@
       "therapist_id": 17,
       "name": "一ノ瀬",
       "tags": null,
-      "shift_count": 6,
+      "shift_count": 5,
       "avg_hours": 6.0,
       "locations": "蕨ルーム"
     },
@@ -3938,7 +3608,7 @@
       "therapist_id": 193,
       "name": "冬月",
       "tags": null,
-      "shift_count": 5,
+      "shift_count": 4,
       "avg_hours": 11.0,
       "locations": "赤羽ルーム"
     },
@@ -3946,7 +3616,7 @@
       "therapist_id": 158,
       "name": "愛咲",
       "tags": null,
-      "shift_count": 5,
+      "shift_count": 4,
       "avg_hours": null,
       "locations": "赤羽ルーム"
     }
@@ -3954,8 +3624,8 @@
   "shift_coverage": [
     {
       "schedule_date": "2026-03-20",
-      "day_count": 21,
-      "night_count": 18
+      "day_count": 8,
+      "night_count": 9
     },
     {
       "schedule_date": "2026-03-21",
@@ -3983,7 +3653,2835 @@
       "night_count": 9
     }
   ],
-  "today_snapshots": [],
+  "today_snapshots": [
+    {
+      "id": 502,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 17,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "一ノ瀬"
+    },
+    {
+      "id": 504,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 147,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "一杉"
+    },
+    {
+      "id": 497,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 100,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "三上"
+    },
+    {
+      "id": 481,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "21:00",
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 489,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 496,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 165,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "優木"
+    },
+    {
+      "id": 493,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 193,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "冬月"
+    },
+    {
+      "id": 509,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 27,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "切島"
+    },
+    {
+      "id": 506,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 85,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "夏川"
+    },
+    {
+      "id": 501,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 111,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "岩崎"
+    },
+    {
+      "id": 484,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 494,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 66,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "平山"
+    },
+    {
+      "id": 510,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 158,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛咲"
+    },
+    {
+      "id": 485,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 492,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 498,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 7,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "月野"
+    },
+    {
+      "id": 487,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 499,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 155,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "権田原"
+    },
+    {
+      "id": 488,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 491,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 483,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "12:00",
+      "end_time": "19:00",
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 507,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 185,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "白雪"
+    },
+    {
+      "id": 508,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 90,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "矢野"
+    },
+    {
+      "id": 505,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 50,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "秋吉"
+    },
+    {
+      "id": 500,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 141,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "綾野"
+    },
+    {
+      "id": 482,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "16:30",
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 490,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 486,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 480,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 503,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 18,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "高柳"
+    },
+    {
+      "id": 495,
+      "checked_at": "2026-03-19 12:41:18",
+      "therapist_id": 4,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "高橋"
+    },
+    {
+      "id": 511,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "21:00",
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 518,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 513,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 514,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 522,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 516,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 517,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 521,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 523,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 512,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "16:30",
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 520,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 515,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 519,
+      "checked_at": "2026-03-19 14:23:38",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 524,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "21:00",
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 530,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 525,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 526,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 534,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 528,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 529,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 533,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 536,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 535,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 532,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 527,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 531,
+      "checked_at": "2026-03-19 15:34:57",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 537,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "21:00",
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 543,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 538,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 539,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 547,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 541,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 542,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 546,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 549,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 548,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 545,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 540,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 544,
+      "checked_at": "2026-03-19 16:49:07",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 550,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "21:00",
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 556,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 551,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 552,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 560,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 554,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 555,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 559,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 562,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 561,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 558,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 553,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 557,
+      "checked_at": "2026-03-19 17:49:16",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 572,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 568,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 563,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 564,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 573,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 566,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 567,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 571,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 575,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 574,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 570,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 565,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 569,
+      "checked_at": "2026-03-19 18:50:03",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 585,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 581,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 576,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 577,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 586,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 579,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 580,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 584,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 588,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 587,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 583,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 578,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 582,
+      "checked_at": "2026-03-19 19:43:44",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 598,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 594,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 589,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 590,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 599,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 592,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "26:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 593,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 597,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 601,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 600,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 596,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 591,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 595,
+      "checked_at": "2026-03-19 20:37:52",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 609,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 605,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 602,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 613,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 610,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 614,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 604,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 608,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 612,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 611,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 607,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 603,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 606,
+      "checked_at": "2026-03-19 22:11:52",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 621,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 617,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 625,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "川村"
+    },
+    {
+      "id": 626,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 622,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 627,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 616,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 620,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 624,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 623,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 619,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 615,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 618,
+      "checked_at": "2026-03-19 23:28:53",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 632,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 628,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 636,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "川村"
+    },
+    {
+      "id": 637,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 633,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 639,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 640,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "橘"
+    },
+    {
+      "id": 631,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 635,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 634,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 630,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 638,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 629,
+      "checked_at": "2026-03-20 00:26:36",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 645,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 641,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 649,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "川村"
+    },
+    {
+      "id": 650,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 646,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 652,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 653,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "橘"
+    },
+    {
+      "id": 644,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 648,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 647,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 643,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 651,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 642,
+      "checked_at": "2026-03-20 01:32:36",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 658,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 654,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 662,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "川村"
+    },
+    {
+      "id": 663,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 659,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 665,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 666,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "橘"
+    },
+    {
+      "id": 657,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 661,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 660,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 656,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 664,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 655,
+      "checked_at": "2026-03-20 02:54:03",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 671,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 667,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 675,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "川村"
+    },
+    {
+      "id": 676,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 672,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 678,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 679,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "橘"
+    },
+    {
+      "id": 670,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 674,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 673,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 669,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 677,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 668,
+      "checked_at": "2026-03-20 04:03:08",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 684,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 680,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 688,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "川村"
+    },
+    {
+      "id": 689,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 685,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 691,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 692,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "橘"
+    },
+    {
+      "id": 683,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 687,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 686,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 682,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 690,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 681,
+      "checked_at": "2026-03-20 05:00:32",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 701,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 199,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "18:00",
+      "end_time": "29:00",
+      "therapist_name": "七里"
+    },
+    {
+      "id": 709,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 100,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "三上"
+    },
+    {
+      "id": 712,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 169,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": "11:00",
+      "end_time": "21:00",
+      "therapist_name": "五野上"
+    },
+    {
+      "id": 719,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 110,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "佐伯"
+    },
+    {
+      "id": 705,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 165,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "therapist_name": "優木"
+    },
+    {
+      "id": 706,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 27,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "20:00",
+      "end_time": "29:00",
+      "therapist_name": "切島"
+    },
+    {
+      "id": 695,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 196,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "therapist_name": "加賀美"
+    },
+    {
+      "id": 693,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 111,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "therapist_name": "岩崎"
+    },
+    {
+      "id": 713,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 172,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "shift_ended",
+      "start_time": "14:00",
+      "end_time": "24:00",
+      "therapist_name": "川村"
+    },
+    {
+      "id": 716,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 63,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": "17:30",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 703,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 81,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "29:00",
+      "therapist_name": "新川"
+    },
+    {
+      "id": 718,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 78,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "春名"
+    },
+    {
+      "id": 699,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 7,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "13:00",
+      "end_time": "23:00",
+      "therapist_name": "月野"
+    },
+    {
+      "id": 697,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 29,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "therapist_name": "桜"
+    },
+    {
+      "id": 702,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 696,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 191,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "20:00",
+      "therapist_name": "梶木"
+    },
+    {
+      "id": 707,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "21:00",
+      "end_time": "26:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 708,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 710,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 150,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": "12:00",
+      "end_time": "19:00",
+      "therapist_name": "琴音"
+    },
+    {
+      "id": 694,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 129,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "therapist_name": "真琴"
+    },
+    {
+      "id": 700,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 50,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "therapist_name": "秋吉"
+    },
+    {
+      "id": 698,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 60,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "12:00",
+      "end_time": "17:00",
+      "therapist_name": "花山"
+    },
+    {
+      "id": 715,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 186,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": "11:00",
+      "end_time": "16:30",
+      "therapist_name": "蒼井"
+    },
+    {
+      "id": 714,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 46,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "西島"
+    },
+    {
+      "id": 717,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 205,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "shift_ended",
+      "start_time": "19:00",
+      "end_time": "28:00",
+      "therapist_name": "西沢"
+    },
+    {
+      "id": 704,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 138,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:00",
+      "therapist_name": "金沢"
+    },
+    {
+      "id": 711,
+      "checked_at": "2026-03-20 06:03:43",
+      "therapist_id": 167,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "shift_ended",
+      "start_time": "10:00",
+      "end_time": "16:00",
+      "therapist_name": "陽ノ宮"
+    },
+    {
+      "id": 728,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 199,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "18:00",
+      "end_time": "29:00",
+      "therapist_name": "七里"
+    },
+    {
+      "id": 736,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 100,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "三上"
+    },
+    {
+      "id": 732,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 165,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:30",
+      "end_time": "23:30",
+      "therapist_name": "優木"
+    },
+    {
+      "id": 733,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 27,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "20:00",
+      "end_time": "29:00",
+      "therapist_name": "切島"
+    },
+    {
+      "id": 722,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 196,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "therapist_name": "加賀美"
+    },
+    {
+      "id": 720,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 111,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "17:00",
+      "therapist_name": "岩崎"
+    },
+    {
+      "id": 730,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 81,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "29:00",
+      "therapist_name": "新川"
+    },
+    {
+      "id": 726,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 7,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "13:00",
+      "end_time": "23:00",
+      "therapist_name": "月野"
+    },
+    {
+      "id": 724,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 29,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "18:00",
+      "therapist_name": "桜"
+    },
+    {
+      "id": 729,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 5,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:00",
+      "therapist_name": "梅澤"
+    },
+    {
+      "id": 723,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 191,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "11:00",
+      "end_time": "20:00",
+      "therapist_name": "梶木"
+    },
+    {
+      "id": 734,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 180,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "21:00",
+      "end_time": "26:30",
+      "therapist_name": "橘"
+    },
+    {
+      "id": 735,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 48,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "水原"
+    },
+    {
+      "id": 721,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 129,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "18:00",
+      "therapist_name": "真琴"
+    },
+    {
+      "id": 727,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 50,
+      "schedule_date": "2026-03-20",
+      "location": "蕨ルーム",
+      "status": "available",
+      "start_time": "16:00",
+      "end_time": "23:00",
+      "therapist_name": "秋吉"
+    },
+    {
+      "id": 725,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 60,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "12:00",
+      "end_time": "17:00",
+      "therapist_name": "花山"
+    },
+    {
+      "id": 731,
+      "checked_at": "2026-03-20 06:36:06",
+      "therapist_id": 138,
+      "schedule_date": "2026-03-20",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "19:00",
+      "end_time": "25:00",
+      "therapist_name": "金沢"
+    }
+  ],
   "scrape_logs": [
     {
       "id": 114,
@@ -4171,7 +6669,7 @@
       "checked_at": "2026-03-20 06:36:06",
       "therapist_id": 100,
       "therapist_name": "三上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4180,7 +6678,7 @@
       "checked_at": "2026-03-20 06:36:06",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4189,7 +6687,7 @@
       "checked_at": "2026-03-20 06:03:43",
       "therapist_id": 100,
       "therapist_name": "三上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4198,7 +6696,7 @@
       "checked_at": "2026-03-20 06:03:43",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4207,7 +6705,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 180,
       "therapist_name": "橘",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4216,7 +6714,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 5,
       "therapist_name": "梅澤",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4225,7 +6723,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 205,
       "therapist_name": "西沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4234,7 +6732,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 63,
       "therapist_name": "愛沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4243,7 +6741,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 172,
       "therapist_name": "川村",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4252,7 +6750,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4261,7 +6759,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4270,7 +6768,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 78,
       "therapist_name": "春名",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4279,7 +6777,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 169,
       "therapist_name": "五野上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4288,7 +6786,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4297,7 +6795,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 46,
       "therapist_name": "西島",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4306,7 +6804,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 167,
       "therapist_name": "陽ノ宮",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4315,7 +6813,7 @@
       "checked_at": "2026-03-20 05:00:32",
       "therapist_id": 110,
       "therapist_name": "佐伯",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4324,7 +6822,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 180,
       "therapist_name": "橘",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4333,7 +6831,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 5,
       "therapist_name": "梅澤",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4342,7 +6840,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 205,
       "therapist_name": "西沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4351,7 +6849,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 63,
       "therapist_name": "愛沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4360,7 +6858,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 172,
       "therapist_name": "川村",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4369,7 +6867,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4378,7 +6876,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4387,7 +6885,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 78,
       "therapist_name": "春名",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4396,7 +6894,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 169,
       "therapist_name": "五野上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4405,7 +6903,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4414,7 +6912,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 46,
       "therapist_name": "西島",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4423,7 +6921,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 167,
       "therapist_name": "陽ノ宮",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4432,7 +6930,7 @@
       "checked_at": "2026-03-20 04:03:08",
       "therapist_id": 110,
       "therapist_name": "佐伯",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4441,7 +6939,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 180,
       "therapist_name": "橘",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4450,7 +6948,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 5,
       "therapist_name": "梅澤",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4459,7 +6957,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 205,
       "therapist_name": "西沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4468,7 +6966,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 63,
       "therapist_name": "愛沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4477,7 +6975,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 172,
       "therapist_name": "川村",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4486,7 +6984,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4495,7 +6993,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4504,7 +7002,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 78,
       "therapist_name": "春名",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4513,7 +7011,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 169,
       "therapist_name": "五野上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4522,7 +7020,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4531,7 +7029,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 46,
       "therapist_name": "西島",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4540,7 +7038,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 167,
       "therapist_name": "陽ノ宮",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4549,7 +7047,7 @@
       "checked_at": "2026-03-20 02:54:03",
       "therapist_id": 110,
       "therapist_name": "佐伯",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4558,7 +7056,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 180,
       "therapist_name": "橘",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4567,7 +7065,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 5,
       "therapist_name": "梅澤",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4576,7 +7074,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 205,
       "therapist_name": "西沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4585,7 +7083,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 63,
       "therapist_name": "愛沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4594,7 +7092,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 172,
       "therapist_name": "川村",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4603,7 +7101,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4612,7 +7110,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4621,7 +7119,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 78,
       "therapist_name": "春名",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4630,7 +7128,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 169,
       "therapist_name": "五野上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4639,7 +7137,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4648,7 +7146,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 46,
       "therapist_name": "西島",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4657,7 +7155,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 167,
       "therapist_name": "陽ノ宮",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4666,7 +7164,7 @@
       "checked_at": "2026-03-20 01:32:36",
       "therapist_id": 110,
       "therapist_name": "佐伯",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4675,7 +7173,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 180,
       "therapist_name": "橘",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4684,7 +7182,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 5,
       "therapist_name": "梅澤",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4693,7 +7191,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 205,
       "therapist_name": "西沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4702,7 +7200,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 63,
       "therapist_name": "愛沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4711,7 +7209,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 172,
       "therapist_name": "川村",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4720,7 +7218,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4729,7 +7227,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4738,7 +7236,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 78,
       "therapist_name": "春名",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4747,7 +7245,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 169,
       "therapist_name": "五野上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4756,7 +7254,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4765,7 +7263,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 46,
       "therapist_name": "西島",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4774,7 +7272,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 167,
       "therapist_name": "陽ノ宮",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4783,7 +7281,7 @@
       "checked_at": "2026-03-20 00:26:36",
       "therapist_id": 110,
       "therapist_name": "佐伯",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4792,7 +7290,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 5,
       "therapist_name": "梅澤",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4801,7 +7299,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 63,
       "therapist_name": "愛沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4810,7 +7308,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 172,
       "therapist_name": "川村",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4819,7 +7317,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4828,7 +7326,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4837,7 +7335,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 78,
       "therapist_name": "春名",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4846,7 +7344,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 169,
       "therapist_name": "五野上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4855,7 +7353,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4864,7 +7362,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 46,
       "therapist_name": "西島",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4873,7 +7371,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 167,
       "therapist_name": "陽ノ宮",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4882,7 +7380,7 @@
       "checked_at": "2026-03-19 23:28:53",
       "therapist_id": 110,
       "therapist_name": "佐伯",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4891,7 +7389,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 5,
       "therapist_name": "梅澤",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4900,7 +7398,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 63,
       "therapist_name": "愛沢",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4909,7 +7407,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4918,7 +7416,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4927,7 +7425,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 78,
       "therapist_name": "春名",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4936,7 +7434,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 169,
       "therapist_name": "五野上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4945,7 +7443,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4954,7 +7452,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 46,
       "therapist_name": "西島",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4963,7 +7461,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 167,
       "therapist_name": "陽ノ宮",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -4972,7 +7470,7 @@
       "checked_at": "2026-03-19 22:11:52",
       "therapist_id": 110,
       "therapist_name": "佐伯",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4981,7 +7479,7 @@
       "checked_at": "2026-03-19 20:37:52",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4990,7 +7488,7 @@
       "checked_at": "2026-03-19 20:37:52",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -4999,7 +7497,7 @@
       "checked_at": "2026-03-19 20:37:52",
       "therapist_id": 78,
       "therapist_name": "春名",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -5008,7 +7506,7 @@
       "checked_at": "2026-03-19 20:37:52",
       "therapist_id": 169,
       "therapist_name": "五野上",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -5017,7 +7515,7 @@
       "checked_at": "2026-03-19 20:37:52",
       "therapist_id": 48,
       "therapist_name": "水原",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -5026,7 +7524,7 @@
       "checked_at": "2026-03-19 20:37:52",
       "therapist_id": 46,
       "therapist_name": "西島",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -5035,7 +7533,7 @@
       "checked_at": "2026-03-19 20:37:52",
       "therapist_id": 167,
       "therapist_name": "陽ノ宮",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
       "start_time": null,
       "end_time": null
@@ -5044,7 +7542,7 @@
       "checked_at": "2026-03-19 20:37:52",
       "therapist_id": 110,
       "therapist_name": "佐伯",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -5053,7 +7551,7 @@
       "checked_at": "2026-03-19 19:43:44",
       "therapist_id": 150,
       "therapist_name": "琴音",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -5062,7 +7560,7 @@
       "checked_at": "2026-03-19 19:43:44",
       "therapist_id": 186,
       "therapist_name": "蒼井",
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
       "start_time": null,
       "end_time": null
@@ -5202,18 +7700,7 @@
   ],
   "favorites_schedule": [
     {
-      "id": 59,
-      "therapist_id": 46,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null,
-      "is_fully_booked": 1,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "西島"
-    },
-    {
-      "id": 60,
+      "id": 946,
       "therapist_id": 48,
       "schedule_date": "2026-03-20",
       "location": "蕨ルーム",
@@ -5224,7 +7711,7 @@
       "therapist_name": "水原"
     },
     {
-      "id": 225,
+      "id": 947,
       "therapist_id": 100,
       "schedule_date": "2026-03-20",
       "location": "赤羽ルーム",
@@ -5233,17 +7720,6 @@
       "is_fully_booked": 1,
       "scraped_at": "2026-03-20 06:35:49",
       "therapist_name": "三上"
-    },
-    {
-      "id": 641,
-      "therapist_id": 110,
-      "schedule_date": "2026-03-20",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null,
-      "is_fully_booked": 1,
-      "scraped_at": "2026-03-19 08:18:25",
-      "therapist_name": "佐伯"
     },
     {
       "id": 71,
@@ -6044,7 +8520,7 @@
         "id": 490,
         "checked_at": "2026-03-19 12:41:18",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6055,7 +8531,7 @@
         "id": 491,
         "checked_at": "2026-03-19 12:41:18",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6066,7 +8542,7 @@
         "id": 497,
         "checked_at": "2026-03-19 12:41:18",
         "therapist_id": 100,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "shift_ended",
         "start_time": null,
@@ -6077,7 +8553,7 @@
         "id": 489,
         "checked_at": "2026-03-19 12:41:18",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6088,7 +8564,7 @@
         "id": 520,
         "checked_at": "2026-03-19 14:23:38",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6099,7 +8575,7 @@
         "id": 521,
         "checked_at": "2026-03-19 14:23:38",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6110,7 +8586,7 @@
         "id": 518,
         "checked_at": "2026-03-19 14:23:38",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6121,7 +8597,7 @@
         "id": 532,
         "checked_at": "2026-03-19 15:34:57",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6132,7 +8608,7 @@
         "id": 533,
         "checked_at": "2026-03-19 15:34:57",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6143,7 +8619,7 @@
         "id": 530,
         "checked_at": "2026-03-19 15:34:57",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6154,7 +8630,7 @@
         "id": 545,
         "checked_at": "2026-03-19 16:49:07",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6165,7 +8641,7 @@
         "id": 546,
         "checked_at": "2026-03-19 16:49:07",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6176,7 +8652,7 @@
         "id": 543,
         "checked_at": "2026-03-19 16:49:07",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6187,7 +8663,7 @@
         "id": 558,
         "checked_at": "2026-03-19 17:49:16",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6198,7 +8674,7 @@
         "id": 559,
         "checked_at": "2026-03-19 17:49:16",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6209,7 +8685,7 @@
         "id": 556,
         "checked_at": "2026-03-19 17:49:16",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6220,7 +8696,7 @@
         "id": 570,
         "checked_at": "2026-03-19 18:50:03",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6231,7 +8707,7 @@
         "id": 571,
         "checked_at": "2026-03-19 18:50:03",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6242,7 +8718,7 @@
         "id": 568,
         "checked_at": "2026-03-19 18:50:03",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6253,7 +8729,7 @@
         "id": 583,
         "checked_at": "2026-03-19 19:43:44",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6264,7 +8740,7 @@
         "id": 584,
         "checked_at": "2026-03-19 19:43:44",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6275,7 +8751,7 @@
         "id": 581,
         "checked_at": "2026-03-19 19:43:44",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6286,7 +8762,7 @@
         "id": 596,
         "checked_at": "2026-03-19 20:37:52",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6297,7 +8773,7 @@
         "id": 597,
         "checked_at": "2026-03-19 20:37:52",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6308,7 +8784,7 @@
         "id": 594,
         "checked_at": "2026-03-19 20:37:52",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6319,7 +8795,7 @@
         "id": 607,
         "checked_at": "2026-03-19 22:11:52",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6330,7 +8806,7 @@
         "id": 608,
         "checked_at": "2026-03-19 22:11:52",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6341,7 +8817,7 @@
         "id": 605,
         "checked_at": "2026-03-19 22:11:52",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6352,7 +8828,7 @@
         "id": 619,
         "checked_at": "2026-03-19 23:28:53",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6363,7 +8839,7 @@
         "id": 620,
         "checked_at": "2026-03-19 23:28:53",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6374,7 +8850,7 @@
         "id": 617,
         "checked_at": "2026-03-19 23:28:53",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6385,7 +8861,7 @@
         "id": 630,
         "checked_at": "2026-03-20 00:26:36",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6396,7 +8872,7 @@
         "id": 631,
         "checked_at": "2026-03-20 00:26:36",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6407,7 +8883,7 @@
         "id": 628,
         "checked_at": "2026-03-20 00:26:36",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6418,7 +8894,7 @@
         "id": 643,
         "checked_at": "2026-03-20 01:32:36",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6429,7 +8905,7 @@
         "id": 644,
         "checked_at": "2026-03-20 01:32:36",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6440,7 +8916,7 @@
         "id": 641,
         "checked_at": "2026-03-20 01:32:36",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6451,7 +8927,7 @@
         "id": 656,
         "checked_at": "2026-03-20 02:54:03",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6462,7 +8938,7 @@
         "id": 657,
         "checked_at": "2026-03-20 02:54:03",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6473,7 +8949,7 @@
         "id": 654,
         "checked_at": "2026-03-20 02:54:03",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6484,7 +8960,7 @@
         "id": 669,
         "checked_at": "2026-03-20 04:03:08",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6495,7 +8971,7 @@
         "id": 670,
         "checked_at": "2026-03-20 04:03:08",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6506,7 +8982,7 @@
         "id": 667,
         "checked_at": "2026-03-20 04:03:08",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6517,7 +8993,7 @@
         "id": 682,
         "checked_at": "2026-03-20 05:00:32",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6528,7 +9004,7 @@
         "id": 683,
         "checked_at": "2026-03-20 05:00:32",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6539,7 +9015,7 @@
         "id": 680,
         "checked_at": "2026-03-20 05:00:32",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6550,7 +9026,7 @@
         "id": 714,
         "checked_at": "2026-03-20 06:03:43",
         "therapist_id": 46,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "shift_ended",
         "start_time": null,
@@ -6561,7 +9037,7 @@
         "id": 708,
         "checked_at": "2026-03-20 06:03:43",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6572,7 +9048,7 @@
         "id": 709,
         "checked_at": "2026-03-20 06:03:43",
         "therapist_id": 100,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6583,7 +9059,7 @@
         "id": 719,
         "checked_at": "2026-03-20 06:03:43",
         "therapist_id": 110,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "shift_ended",
         "start_time": null,
@@ -6594,7 +9070,7 @@
         "id": 735,
         "checked_at": "2026-03-20 06:36:06",
         "therapist_id": 48,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "蕨ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6605,7 +9081,7 @@
         "id": 736,
         "checked_at": "2026-03-20 06:36:06",
         "therapist_id": 100,
-        "schedule_date": "2026-03-19",
+        "schedule_date": "2026-03-20",
         "location": "赤羽ルーム",
         "status": "fully_booked",
         "start_time": null,
@@ -6618,28 +9094,28 @@
         "therapist_id": 46,
         "name": "西島",
         "tags": "[\"３０代オトナ女子\", \"圧倒的リピート率\", \"美女☆エース\", \"殿のお悦び\", \"事前予約必須\"]",
-        "shift_count": 8,
+        "shift_count": 7,
         "locations": "赤羽ルーム"
       },
       {
         "therapist_id": 48,
         "name": "水原",
         "tags": "[\"３０代オトナ女子\", \"夢中にさせちゃうぞ♡\", \"美人魔術師\", \"華奢×爆乳\", \"事前予約必須\"]",
-        "shift_count": 10,
+        "shift_count": 9,
         "locations": "蕨ルーム"
       },
       {
         "therapist_id": 100,
         "name": "三上",
         "tags": "[\"３０代オトナ女子\", \"圧倒的リピート率\", \"夢中にさせちゃうぞ♡\", \"萌えあがるマブイ淑女\", \"事前予約必須\"]",
-        "shift_count": 8,
+        "shift_count": 7,
         "locations": "赤羽ルーム"
       },
       {
         "therapist_id": 110,
         "name": "佐伯",
         "tags": "[\"３０代オトナ女子\", \"殿方歓喜Gカップ美女\", \"上品な雰囲気\", \"これぞ究極の癒し!!\", \"事前予約必須\"]",
-        "shift_count": 6,
+        "shift_count": 5,
         "locations": "赤羽ルーム"
       }
     ]
@@ -11054,13 +13530,6 @@
     {
       "therapist_id": 17,
       "name": "一ノ瀬",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 17,
-      "name": "一ノ瀬",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -11085,13 +13554,6 @@
       "weekday": "火",
       "weekday_num": 2,
       "shift_count": 2
-    },
-    {
-      "therapist_id": 147,
-      "name": "一杉",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
     },
     {
       "therapist_id": 147,
@@ -11126,13 +13588,6 @@
       "name": "七里",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 199,
-      "name": "七里",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -11180,13 +13635,6 @@
     {
       "therapist_id": 100,
       "name": "三上",
-      "weekday": "木",
-      "weekday_num": 4,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 100,
-      "name": "三上",
       "weekday": "金",
       "weekday_num": 5,
       "shift_count": 1
@@ -11229,13 +13677,6 @@
     {
       "therapist_id": 169,
       "name": "五野上",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 169,
-      "name": "五野上",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -11271,13 +13712,6 @@
     {
       "therapist_id": 110,
       "name": "佐伯",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 110,
-      "name": "佐伯",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -11308,13 +13742,6 @@
       "name": "優木",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 165,
-      "name": "優木",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -11355,13 +13782,6 @@
     {
       "therapist_id": 193,
       "name": "冬月",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 193,
-      "name": "冬月",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -11397,13 +13817,6 @@
     {
       "therapist_id": 27,
       "name": "切島",
-      "weekday": "木",
-      "weekday_num": 4,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 27,
-      "name": "切島",
       "weekday": "金",
       "weekday_num": 5,
       "shift_count": 1
@@ -11441,13 +13854,6 @@
       "name": "加賀美",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 196,
-      "name": "加賀美",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -11488,13 +13894,6 @@
     {
       "therapist_id": 85,
       "name": "夏川",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 85,
-      "name": "夏川",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -11525,13 +13924,6 @@
       "name": "岩崎",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 111,
-      "name": "岩崎",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -11579,13 +13971,6 @@
     {
       "therapist_id": 172,
       "name": "川村",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 172,
-      "name": "川村",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -11614,13 +13999,6 @@
     {
       "therapist_id": 66,
       "name": "平山",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 66,
-      "name": "平山",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -11644,13 +14022,6 @@
       "name": "愛咲",
       "weekday": "火",
       "weekday_num": 2,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 158,
-      "name": "愛咲",
-      "weekday": "金",
-      "weekday_num": 5,
       "shift_count": 1
     },
     {
@@ -11691,13 +14062,6 @@
     {
       "therapist_id": 63,
       "name": "愛沢",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 63,
-      "name": "愛沢",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -11728,13 +14092,6 @@
       "name": "新川",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 81,
-      "name": "新川",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -11777,13 +14134,6 @@
       "name": "春名",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 78,
-      "name": "春名",
-      "weekday": "金",
-      "weekday_num": 5,
       "shift_count": 1
     },
     {
@@ -11819,13 +14169,6 @@
       "name": "月野",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 7,
-      "name": "月野",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -11868,13 +14211,6 @@
       "name": "桜",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 29,
-      "name": "桜",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -11918,13 +14254,6 @@
       "weekday": "水",
       "weekday_num": 3,
       "shift_count": 2
-    },
-    {
-      "therapist_id": 5,
-      "name": "梅澤",
-      "weekday": "木",
-      "weekday_num": 4,
-      "shift_count": 1
     },
     {
       "therapist_id": 5,
@@ -11966,13 +14295,6 @@
       "name": "梶木",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 191,
-      "name": "梶木",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -12013,13 +14335,6 @@
     {
       "therapist_id": 155,
       "name": "権田原",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 155,
-      "name": "権田原",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -12051,13 +14366,6 @@
       "weekday": "水",
       "weekday_num": 3,
       "shift_count": 2
-    },
-    {
-      "therapist_id": 180,
-      "name": "橘",
-      "weekday": "木",
-      "weekday_num": 4,
-      "shift_count": 1
     },
     {
       "therapist_id": 180,
@@ -12104,13 +14412,6 @@
     {
       "therapist_id": 48,
       "name": "水原",
-      "weekday": "木",
-      "weekday_num": 4,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 48,
-      "name": "水原",
       "weekday": "金",
       "weekday_num": 5,
       "shift_count": 1
@@ -12148,13 +14449,6 @@
       "name": "琴音",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 150,
-      "name": "琴音",
-      "weekday": "金",
-      "weekday_num": 5,
       "shift_count": 1
     },
     {
@@ -12188,13 +14482,6 @@
     {
       "therapist_id": 185,
       "name": "白雪",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 185,
-      "name": "白雪",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -12225,13 +14512,6 @@
       "name": "真琴",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 129,
-      "name": "真琴",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -12272,13 +14552,6 @@
     {
       "therapist_id": 90,
       "name": "矢野",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 90,
-      "name": "矢野",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -12309,13 +14582,6 @@
       "name": "秋吉",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 50,
-      "name": "秋吉",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -12356,13 +14622,6 @@
     {
       "therapist_id": 141,
       "name": "綾野",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 141,
-      "name": "綾野",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -12393,13 +14652,6 @@
       "name": "花山",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 60,
-      "name": "花山",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -12442,13 +14694,6 @@
       "name": "蒼井",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 186,
-      "name": "蒼井",
-      "weekday": "金",
-      "weekday_num": 5,
       "shift_count": 1
     },
     {
@@ -12489,13 +14734,6 @@
     {
       "therapist_id": 46,
       "name": "西島",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 46,
-      "name": "西島",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -12531,13 +14769,6 @@
     {
       "therapist_id": 205,
       "name": "西沢",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 205,
-      "name": "西沢",
       "weekday": "土",
       "weekday_num": 6,
       "shift_count": 1
@@ -12568,13 +14799,6 @@
       "name": "金沢",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 138,
-      "name": "金沢",
-      "weekday": "木",
-      "weekday_num": 4,
       "shift_count": 1
     },
     {
@@ -12617,13 +14841,6 @@
       "name": "陽ノ宮",
       "weekday": "水",
       "weekday_num": 3,
-      "shift_count": 1
-    },
-    {
-      "therapist_id": 167,
-      "name": "陽ノ宮",
-      "weekday": "金",
-      "weekday_num": 5,
       "shift_count": 1
     },
     {
@@ -12653,13 +14870,6 @@
       "weekday": "火",
       "weekday_num": 2,
       "shift_count": 2
-    },
-    {
-      "therapist_id": 18,
-      "name": "高柳",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
     },
     {
       "therapist_id": 18,
@@ -12688,13 +14898,6 @@
       "weekday": "火",
       "weekday_num": 2,
       "shift_count": 2
-    },
-    {
-      "therapist_id": 4,
-      "name": "高橋",
-      "weekday": "金",
-      "weekday_num": 5,
-      "shift_count": 1
     },
     {
       "therapist_id": 4,
@@ -12718,7 +14921,7 @@
       "min_hours_to_book": 3.57
     },
     {
-      "schedule_date": "2026-03-19",
+      "schedule_date": "2026-03-20",
       "booked_count": 9,
       "avg_hours_to_book": 7.31,
       "min_hours_to_book": 1.71
