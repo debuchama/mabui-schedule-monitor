@@ -54,7 +54,7 @@ def run(db_path=DB_PATH):
     conn  = get_connection(db_path)
     cur   = conn.cursor()
     at    = now_jst()
-    today = date.today().isoformat()
+    today = datetime.now(JST).date().isoformat()
 
     logger.info("weekly_collector: start")
     week_data   = scrape_week()
