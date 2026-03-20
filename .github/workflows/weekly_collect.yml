@@ -31,6 +31,9 @@ jobs:
       - name: Weekly collect
         run: python scripts/weekly_collector.py
 
+      - name: INFO page and weekly schedules
+        run: python scripts/scrape_info.py
+
       - name: Daily monitor snapshot
         run: python scripts/daily_monitor.py
 
