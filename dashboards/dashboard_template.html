@@ -321,9 +321,16 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
     const cls=lc(loc);
     const rows=(byL[loc]||[]).map(s=>{
       const bStr=bkdStr[s.therapist_id];
+      // INFO情報から残枠バッジ生成
+      const infoRec=(DATA.info_schedule_today||[]).find(r=>r.therapist_id===s.therapist_id||r.name_raw===s.therapist_name);
+      let remBadge='';
+      if(infoRec&&!s.is_fully_booked){
+        if(infoRec.is_soldout)remBadge='<span class="rem-badge rem-soldout">事前完売</span>';
+        else if(infoRec.remaining!=null&&infoRec.remaining<=3)remBadge=`<span class="rem-badge rem-low">残${infoRec.remaining}枠</span>`;
+      }
       const tTag=s.is_fully_booked?`<span class="bl">${bStr?bStr+' 満了':'予約満了'}</span>`
         :`<span class="st2">${dt(s.start_time)}〜${dt(s.end_time)}</span>`;
-      return`<div class="sr"><span class="dot ${s.is_fully_booked?'b':'a'}"></span><span class="sn">${tl(s.therapist_id,s.therapist_name)}</span>${tTag}</div>`;
+      return`<div class="sr"><span class="dot ${s.is_fully_booked?'b':'a'}"></span><span class="sn">${tl(s.therapist_id,s.therapist_name)}${remBadge}</span>${tTag}</div>`;
     }).join('');
     return`<div class="rc"><div class="rh ${cls}">🏠 ${loc}<span style="margin-left:auto;font-size:.73rem;font-weight:400">${(byL[loc]||[]).length}名</span></div><div class="rb">${rows}</div></div>`;
   }).join('')||'<div class="nd">本日のスケジュールデータなし</div>';
@@ -465,38 +472,89 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
 
 // ── WEEKLY ────────────────────────────────────────────────────────────────
 (function(){
-  const dates=DATA.week_dates;
-  const lbl=dates.map(d=>{const w=['日','月','火','水','木','金','土'][new Date(d).getDay()];return d.slice(5).replace('-','/')+'('+w+')';});
+  // ── 週間スケジュール表（個別ページから取得した真のデータ）──────────────
+  const ws=(DATA.weekly_schedule_all||[]);
+  const allDates=[...new Set(ws.map(r=>r.schedule_date))].sort();
+  const allNames=[...new Set(ws.map(r=>r.therapist_name))];
+
+  if(ws.length&&allDates.length){
+    const wsMap={};
+    ws.forEach(r=>{if(!wsMap[r.therapist_name])wsMap[r.therapist_name]={};wsMap[r.therapist_name][r.schedule_date]=r;});
+    const infoM={};(DATA.info_schedule_today||[]).forEach(r=>{if(r.name_raw)infoM[r.name_raw]=r;});
+    const dlabels=allDates.map(d=>{
+      const w=['日','月','火','水','木','金','土'][new Date(d).getDay()];
+      const isToday=d===DATA.today;
+      return`<span style="${isToday?'color:var(--gold);font-weight:700':''}">${d.slice(5).replace('-','/')}<br><small>(${w})</small></span>`;
+    });
+    let tbl=`<table class="ht" style="min-width:600px"><thead><tr><th style="white-space:nowrap;text-align:left">スタッフ</th>${dlabels.map(l=>`<th style="font-size:.72rem;text-align:center;min-width:70px">${l}</th>`).join('')}</tr></thead><tbody>`;
+    tbl+=allNames.map(name=>{
+      const cells=allDates.map(d=>{
+        const rec=wsMap[name]&&wsMap[name][d];
+        if(!rec)return`<td style="color:var(--border);text-align:center">—</td>`;
+        const isToday=d===DATA.today;
+        if(rec.status==='fully_booked'){
+          const info=infoM[name];
+          const badge=info&&info.is_soldout?'<span class="rem-badge rem-soldout" style="font-size:.6rem;display:block">完売</span>':'';
+          return`<td style="background:rgba(224,85,85,.15);text-align:center;font-size:.72rem">満了${badge}</td>`;
+        }
+        const locClr=rec.location&&rec.location.includes('赤羽')?'rgba(224,85,85,.08)':'rgba(85,153,224,.08)';
+        const locShort=(rec.location||'').replace('ルーム','');
+        let badge='';
+        if(isToday&&infoM[name]){
+          const ir=infoM[name];
+          if(ir.remaining!=null&&ir.remaining<=3&&!ir.is_soldout)badge=`<span class="rem-badge rem-low" style="font-size:.6rem;display:block">残${ir.remaining}枠</span>`;
+        }
+        return`<td style="background:${locClr}${isToday?';outline:1px solid var(--gold)':''};font-size:.72rem;text-align:center;white-space:nowrap">${dt(rec.start_time)}〜${dt(rec.end_time)}<br><span style="color:var(--muted);font-size:.63rem">${locShort}</span>${badge}</td>`;
+      }).join('');
+      return`<tr><td style="white-space:nowrap;font-size:.78rem;padding:5px 8px">${name}</td>${cells}</tr>`;
+    }).join('');
+    tbl+='</tbody></table>';
+    document.getElementById('weeklySchedTable').innerHTML=tbl;
+  } else {
+    document.getElementById('weeklySchedTable').innerHTML='<div class="nd">週間スケジュールデータ収集中...</div>';
+  }
+
+  // ── 日別スタッフ数バーチャート ──────────────────────────────────────
+  const sumData=DATA.weekly_summary||[];
+  const sumDates=[...new Set(sumData.map(r=>r.schedule_date))].sort();
   const LC={'赤羽ルーム':{bg:'rgba(224,85,85,.6)',bo:'#e05555'},'蕨ルーム':{bg:'rgba(85,153,224,.6)',bo:'#5599e0'}};
-  const sdl={};DATA.daily_location_summary.forEach(r=>{if(!sdl[r.schedule_date])sdl[r.schedule_date]={};sdl[r.schedule_date][r.location]=r.staff_count;});
+  const sdl={};sumData.forEach(r=>{if(!sdl[r.schedule_date])sdl[r.schedule_date]={};sdl[r.schedule_date][r.location]=r.total;});
   const lo=['赤羽ルーム','蕨ルーム'];
-  new Chart(document.getElementById('weeklyBarChart'),{type:'bar',data:{labels:lbl,datasets:lo.map(l=>({
-    label:l,data:dates.map(d=>(sdl[d]||{})[l]||0),backgroundColor:LC[l].bg,borderColor:LC[l].bo,borderWidth:1,borderRadius:4,
-  }))},options:{responsive:true,plugins:{legend:{labels:{color:'#7a7a90',font:{size:11}}}},
-    scales:{x:{stacked:true,ticks:{color:'#7a7a90'},grid:{color:'#2a2a35'}},y:{stacked:true,ticks:{color:'#7a7a90',precision:0},grid:{color:'#2a2a35'}}}}});
-  const scm={};DATA.shift_coverage.forEach(r=>{scm[r.schedule_date]=r;});
-  new Chart(document.getElementById('shiftChart'),{type:'bar',data:{labels:lbl,datasets:[
-    {label:'昼帯(<18時)',data:dates.map(d=>(scm[d]||{}).day_count||0),backgroundColor:'rgba(234,179,8,.5)',borderColor:'#eab308',borderWidth:1,borderRadius:4},
-    {label:'夜帯(18時~)',data:dates.map(d=>(scm[d]||{}).night_count||0),backgroundColor:'rgba(129,77,255,.5)',borderColor:'#8147ff',borderWidth:1,borderRadius:4},
+  const slbl=sumDates.map(d=>{const w=['日','月','火','水','木','金','土'][new Date(d).getDay()];return d.slice(5).replace('-','/')+'('+w+')';});
+  if(sumDates.length){
+    new Chart(document.getElementById('weeklyBarChart'),{type:'bar',data:{labels:slbl,datasets:lo.map(l=>({
+      label:l,data:sumDates.map(d=>(sdl[d]||{})[l]||0),backgroundColor:LC[l].bg,borderColor:LC[l].bo,borderWidth:1,borderRadius:4,
+    }))},options:{responsive:true,plugins:{legend:{labels:{color:'#7a7a90',font:{size:11}}}},
+      scales:{x:{stacked:true,ticks:{color:'#7a7a90'},grid:{color:'#2a2a35'}},y:{stacked:true,ticks:{color:'#7a7a90',precision:0},grid:{color:'#2a2a35'}}}}});
+  }
+
+  // ── 昼夜バランス（shift_coverage から、なければ weekly_schedule から） ─
+  const scm={};(DATA.shift_coverage||[]).forEach(r=>{scm[r.schedule_date]=r;});
+  const schDates=sumDates.length?sumDates:DATA.week_dates;
+  const slbl2=schDates.map(d=>{const w=['日','月','火','水','木','金','土'][new Date(d).getDay()];return d.slice(5).replace('-','/')+'('+w+')';});
+  // weekly_schedule_all から昼夜を計算
+  const dayMap={},nightMap={};
+  ws.forEach(r=>{
+    if(!r.start_time)return;
+    const h=parseInt(r.start_time.split(':')[0]);
+    if(h<18){if(!dayMap[r.schedule_date])dayMap[r.schedule_date]=0;dayMap[r.schedule_date]++;}
+    else{if(!nightMap[r.schedule_date])nightMap[r.schedule_date]=0;nightMap[r.schedule_date]++;}
+  });
+  new Chart(document.getElementById('shiftChart'),{type:'bar',data:{labels:slbl2,datasets:[
+    {label:'昼帯(<18時)',data:schDates.map(d=>dayMap[d]||(scm[d]||{}).day_count||0),backgroundColor:'rgba(234,179,8,.5)',borderColor:'#eab308',borderWidth:1,borderRadius:4},
+    {label:'夜帯(18時~)',data:schDates.map(d=>nightMap[d]||(scm[d]||{}).night_count||0),backgroundColor:'rgba(129,77,255,.5)',borderColor:'#8147ff',borderWidth:1,borderRadius:4},
   ]},options:{responsive:true,plugins:{legend:{labels:{color:'#7a7a90',font:{size:11}}}},
     scales:{x:{stacked:true,ticks:{color:'#7a7a90'},grid:{color:'#2a2a35'}},y:{stacked:true,ticks:{color:'#7a7a90',precision:0},grid:{color:'#2a2a35'}}}}});
-  // heatmap
-  const maxC=Math.max(...DATA.daily_location_summary.map(r=>r.staff_count),1);
-  const head=`<tr><th>店舗</th>${lbl.map(l=>`<th>${l}</th>`).join('')}</tr>`;
-  const body=lo.map(loc=>`<tr><th>${lp(loc)}</th>${dates.map(d=>{const c=(sdl[d]||{})[loc]||0;return`<td class="h${Math.min(4,Math.round(c/maxC*4))}">${c||''}</td>`;}).join('')}</tr>`).join('');
-  document.getElementById('heatmapTable').innerHTML=`<thead>${head}</thead><tbody>${body}</tbody>`;
 
   // 曜日別パターン
+  const wNames=[...new Set((DATA.weekday_pattern||[]).map(r=>r.name))];
+  const wdMap={};(DATA.weekday_pattern||[]).forEach(r=>{if(!wdMap[r.name])wdMap[r.name]={};wdMap[r.name][r.weekday_num]=r.shift_count;});
+  const maxWd=Math.max(...(DATA.weekday_pattern||[]).map(r=>r.shift_count),1);
   const dayNames=['日','月','火','水','木','金','土'];
-  const names=[...new Set(DATA.weekday_pattern.map(r=>r.name))];
-  const wdMap={};DATA.weekday_pattern.forEach(r=>{if(!wdMap[r.name])wdMap[r.name]={};wdMap[r.name][r.weekday_num]=r.shift_count;});
-  const maxWd=Math.max(...DATA.weekday_pattern.map(r=>r.shift_count),1);
   const whead=`<tr><th>スタッフ</th>${dayNames.map(d=>`<th>${d}</th>`).join('')}</tr>`;
-  const wbody=names.map(name=>`<tr><td>${name}</td>${[0,1,2,3,4,5,6].map(d=>{const c=(wdMap[name]||{})[d]||0;return`<td class="h${Math.min(4,Math.round(c/maxWd*4))}">${c||''}</td>`;}).join('')}</tr>`).join('');
-  document.getElementById('weekdayTable').innerHTML=`<thead>${whead}</thead><tbody>${wbody}</tbody>`;
-})();
-
-// ── INSIGHTS ─────────────────────────────────────────────────────────────
+  const wbody=wNames.map(name=>`<tr><td style="font-size:.78rem">${name}</td>${[0,1,2,3,4,5,6].map(d=>{const c=(wdMap[name]||{})[d]||0;return`<td class="h${Math.min(4,Math.round(c/maxWd*4))}">${c||''}</td>`;}).join('')}</tr>`).join('');
+  if(wNames.length)document.getElementById('weekdayTable').innerHTML=`<thead>${whead}</thead><tbody>${wbody}</tbody>`;
+})();// ── INSIGHTS ─────────────────────────────────────────────────────────────
 (function(){
   // 時間帯別圧力ヒートマップ
   const names=[...new Set(DATA.hourly_pressure.map(r=>r.therapist_name))];
