@@ -182,7 +182,38 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
         ORDER BY avg_hours_to_book ASC
     """)
 
-    # 10. favorites
+    # ── INFO スケジュール（残枠・完売情報）────────────────────────────────
+    try:
+        info_schedule_today = q(conn, """
+            SELECT name_raw, therapist_id, location, start_time, end_time,
+                   note, is_soldout, remaining, scraped_at
+            FROM info_schedule WHERE schedule_date=?
+            ORDER BY start_time NULLS LAST
+        """, (today,))
+    except Exception:
+        info_schedule_today = []
+
+    # ── 週間スケジュール（個別ページから取得した真の出勤予定）──────────────
+    try:
+        weekly_schedule_all = q(conn, """
+            SELECT ws.therapist_id, t.name AS therapist_name, t.tags,
+                   ws.schedule_date, ws.location, ws.start_time, ws.end_time, ws.status
+            FROM weekly_schedule ws JOIN therapists t ON t.therapist_id=ws.therapist_id
+            WHERE ws.schedule_date >= ? AND ws.status != 'off'
+            ORDER BY ws.schedule_date, ws.start_time NULLS LAST
+        """, (today,))
+        weekly_summary = q(conn, """
+            SELECT schedule_date, location,
+                   COUNT(*) AS total,
+                   SUM(CASE WHEN status='fully_booked' THEN 1 ELSE 0 END) AS booked
+            FROM weekly_schedule WHERE schedule_date >= ? AND status != 'off'
+            GROUP BY schedule_date, location ORDER BY schedule_date, location
+        """, (today,))
+    except Exception:
+        weekly_schedule_all = []
+        weekly_summary      = []
+
+        # 10. favorites
     favorites_config = []
     if os.path.exists(FAVORITES_JSON):
         with open(FAVORITES_JSON, encoding='utf-8') as f:
@@ -192,11 +223,15 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
     if fav_ids:
         ph = ','.join('?'*len(fav_ids))
         favorites_schedule = q(conn, f"""
-            SELECT ds.*, t.name AS therapist_name
-            FROM daily_schedules ds JOIN therapists t ON t.therapist_id=ds.therapist_id
-            WHERE ds.therapist_id IN ({ph}) AND ds.schedule_date BETWEEN ? AND ?
-            ORDER BY ds.schedule_date, ds.start_time NULLS LAST
-        """, (*fav_ids, week_dates[0], week_dates[-1]))
+            SELECT ws.therapist_id, ws.schedule_date, ws.location,
+                   ws.start_time, ws.end_time,
+                   CASE WHEN ws.status='fully_booked' THEN 1 ELSE 0 END AS is_fully_booked,
+                   ws.scraped_at, t.name AS therapist_name
+            FROM weekly_schedule ws JOIN therapists t ON t.therapist_id=ws.therapist_id
+            WHERE ws.therapist_id IN ({ph}) AND ws.schedule_date >= ?
+              AND ws.status != 'off'
+            ORDER BY ws.schedule_date, ws.start_time NULLS LAST
+        """, (*fav_ids, today))
 
     # ── NEW: 11. 時間帯別予約圧力ヒートマップ ────────────────────────────
     # checked_at の時刻を1時間単位に丸めて、fully_booked 率を集計
@@ -294,7 +329,7 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
     # last_seen が7日以上前で今週出勤している人 = 復帰
     newcomers = q(conn, """
         SELECT therapist_id, name, first_seen FROM therapists
-        WHERE first_seen >= ? AND is_active=1 ORDER BY first_seen DESC
+        WHERE DATE(first_seen) >= ? AND is_active=1 ORDER BY first_seen DESC
     """, (past7,))
     returnees = q(conn, """
         SELECT t.therapist_id, t.name, t.last_seen
@@ -353,6 +388,9 @@ def export_all(db_path=DB_PATH, out_path=OUTPUT_JSON):
         'booking_trend'         : booking_trend,
         'tag_popularity'        : tag_popularity_agg,
         'newcomers'             : newcomers,
+        'info_schedule_today'   : info_schedule_today,
+        'weekly_schedule_all'   : weekly_schedule_all,
+        'weekly_summary'        : weekly_summary,
         'returnees'             : returnees,
     }
 
