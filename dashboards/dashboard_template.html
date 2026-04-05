@@ -140,13 +140,13 @@ a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold-l);text-decora
 
 <!-- WEEKLY -->
 <div id="tab-weekly" class="tp cnt">
-  <div class="cg">
-    <div class="cc"><h4>週間スタッフ数（店舗別）</h4><canvas id="weeklyBarChart" height="200"></canvas></div>
-    <div class="cc"><h4>昼夜シフトバランス</h4><canvas id="shiftChart" height="200"></canvas></div>
-  </div>
-  <div class="st">ヒートマップ（店舗×日）</div>
+  <div class="st">今週の出勤スケジュール <span style="font-size:.7rem;color:var(--muted);font-weight:400">（スタッフ個別ページより・信頼性高）</span></div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:20px;overflow-x:auto">
-    <table class="ht" id="heatmapTable"></table>
+    <div id="weeklySchedTable"></div>
+  </div>
+  <div class="cg">
+    <div class="cc"><h4>日別スタッフ数（店舗別）</h4><canvas id="weeklyBarChart" height="200"></canvas></div>
+    <div class="cc"><h4>昼夜シフトバランス</h4><canvas id="shiftChart" height="200"></canvas></div>
   </div>
   <div class="st">曜日別出勤パターン</div>
   <div class="wd-wrap"><table class="ht" id="weekdayTable"></table></div>

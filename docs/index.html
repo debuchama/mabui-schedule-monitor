@@ -140,13 +140,13 @@ a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold-l);text-decora
 
 <!-- WEEKLY -->
 <div id="tab-weekly" class="tp cnt">
-  <div class="cg">
-    <div class="cc"><h4>週間スタッフ数（店舗別）</h4><canvas id="weeklyBarChart" height="200"></canvas></div>
-    <div class="cc"><h4>昼夜シフトバランス</h4><canvas id="shiftChart" height="200"></canvas></div>
-  </div>
-  <div class="st">ヒートマップ（店舗×日）</div>
+  <div class="st">今週の出勤スケジュール <span style="font-size:.7rem;color:var(--muted);font-weight:400">（スタッフ個別ページより・信頼性高）</span></div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:20px;overflow-x:auto">
-    <table class="ht" id="heatmapTable"></table>
+    <div id="weeklySchedTable"></div>
+  </div>
+  <div class="cg">
+    <div class="cc"><h4>日別スタッフ数（店舗別）</h4><canvas id="weeklyBarChart" height="200"></canvas></div>
+    <div class="cc"><h4>昼夜シフトバランス</h4><canvas id="shiftChart" height="200"></canvas></div>
   </div>
   <div class="st">曜日別出勤パターン</div>
   <div class="wd-wrap"><table class="ht" id="weekdayTable"></table></div>
@@ -200,7 +200,7 @@ a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold-l);text-decora
 
 <script>
 const DATA = {
-  "generated_at": "2026-04-05T22:08:08.766158+09:00",
+  "generated_at": "2026-04-05T22:57:18.420716+09:00",
   "today": "2026-04-05",
   "week_dates": [
     "2026-04-05",
@@ -219,7 +219,7 @@ const DATA = {
       "height_cm": 130,
       "cup_size": null,
       "first_seen": "2026-03-20 20:53:34",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"使用条件はコメント参照\"]"
     },
@@ -362,7 +362,7 @@ const DATA = {
       "height_cm": 150,
       "cup_size": "C",
       "first_seen": "2026-03-20 06:03:43",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"夢中にさせちゃうぞ♡\", \"癒しクイーン\"]"
     },
@@ -373,7 +373,7 @@ const DATA = {
       "height_cm": 130,
       "cup_size": null,
       "first_seen": "2026-03-20 20:53:34",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[]"
     },
@@ -384,7 +384,7 @@ const DATA = {
       "height_cm": 154,
       "cup_size": "D",
       "first_seen": "2026-03-18 08:30:22",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"飾らず気取らない\", \"芸術的なボディライン\", \"センスの良さが光る\", \"おもてなし力♡\"]"
     },
@@ -428,7 +428,7 @@ const DATA = {
       "height_cm": 143,
       "cup_size": "F",
       "first_seen": "2026-03-19 06:35:18",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"ギャップ施術に翻弄♡\", \"女性らしい曲線美\", \"萌えあがるマブイ淑女\"]"
     },
@@ -461,7 +461,7 @@ const DATA = {
       "height_cm": 163,
       "cup_size": "F",
       "first_seen": "2026-03-16 10:32:06",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"圧倒的♡施術\", \"フェロモンダダ漏れ\"]"
     },
@@ -483,7 +483,7 @@ const DATA = {
       "height_cm": 160,
       "cup_size": "E",
       "first_seen": "2026-03-20 06:03:43",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"超要注目セラピ\", \"20代オトナ女子\", \"マッサージもお上手♡\", \"繊細かつ可憐な姿\"]"
     },
@@ -593,7 +593,7 @@ const DATA = {
       "height_cm": 160,
       "cup_size": "C",
       "first_seen": "2026-04-03 06:02:35",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"屈指のない笑顔\", \"しっとり優しい系\", \"包み込む優しさ\"]"
     },
@@ -670,7 +670,7 @@ const DATA = {
       "height_cm": 160,
       "cup_size": "E",
       "first_seen": "2026-03-20 06:03:43",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"真心たーっぷり\", \"均整取れた美しさ\", \"男のロマン♪\"]"
     },
@@ -714,7 +714,7 @@ const DATA = {
       "height_cm": 164,
       "cup_size": "D",
       "first_seen": "2026-03-18 08:30:22",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"見惚れる美貌\", \"正統派美人\", \"美しきボディライン♡\"]"
     },
@@ -725,7 +725,7 @@ const DATA = {
       "height_cm": 162,
       "cup_size": "D",
       "first_seen": "2026-03-20 06:03:43",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"美脚♡美人\", \"人一倍強い癒し\", \"甘く攻める小悪魔な指先\"]"
     },
@@ -813,7 +813,7 @@ const DATA = {
       "height_cm": 165,
       "cup_size": "F",
       "first_seen": "2026-03-26 06:39:51",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"４０代オトナ女子\", \"美しきビーナス\", \"女優フェイス\"]"
     },
@@ -824,7 +824,7 @@ const DATA = {
       "height_cm": 160,
       "cup_size": "G",
       "first_seen": "2026-03-18 08:30:22",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"完！全！に虜に\", \"圧倒的リピート率\", \"ウルトラGカップ\", \"事前予約必須\"]"
     },
@@ -835,7 +835,7 @@ const DATA = {
       "height_cm": 163,
       "cup_size": "F",
       "first_seen": "2026-03-16 10:32:06",
-      "last_seen": "2026-04-05 20:53:55",
+      "last_seen": "2026-04-05 22:04:06",
       "is_active": 1,
       "tags": "[\"３０代オトナ女子\", \"他店様人気セラピスト\", \"衝撃走る”Fカップ”\", \"攻めすぎ注意報発令\"]"
     }
@@ -4380,9 +4380,172 @@ const DATA = {
       "start_time": null,
       "end_time": null,
       "therapist_name": "高橋"
+    },
+    {
+      "id": 6012,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 215,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "29:00",
+      "therapist_name": "ご新規割"
+    },
+    {
+      "id": 6019,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 196,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "加賀美"
+    },
+    {
+      "id": 6011,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 216,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "29:00",
+      "therapist_name": "増設割"
+    },
+    {
+      "id": 6022,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 85,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "夏川"
+    },
+    {
+      "id": 6023,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 172,
+      "schedule_date": "2026-04-05",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "川村"
+    },
+    {
+      "id": 6014,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 63,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "18:00",
+      "end_time": "23:30",
+      "therapist_name": "愛沢"
+    },
+    {
+      "id": 6016,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 81,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "新川"
+    },
+    {
+      "id": 6015,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 177,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "20:00",
+      "end_time": "26:00",
+      "therapist_name": "比嘉"
+    },
+    {
+      "id": 6017,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 129,
+      "schedule_date": "2026-04-05",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "真琴"
+    },
+    {
+      "id": 6020,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 141,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "綾野"
+    },
+    {
+      "id": 6021,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 60,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "花山"
+    },
+    {
+      "id": 6013,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 131,
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "status": "available",
+      "start_time": "10:00",
+      "end_time": "27:00",
+      "therapist_name": "高宮"
+    },
+    {
+      "id": 6024,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 18,
+      "schedule_date": "2026-04-05",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "高柳"
+    },
+    {
+      "id": 6018,
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 4,
+      "schedule_date": "2026-04-05",
+      "location": "蕨ルーム",
+      "status": "fully_booked",
+      "start_time": null,
+      "end_time": null,
+      "therapist_name": "高橋"
     }
   ],
   "scrape_logs": [
+    {
+      "id": 420,
+      "run_at": "2026-04-05 22:04:06",
+      "task_type": "daily_monitor",
+      "target_date": "2026-04-05",
+      "records_found": 14,
+      "success": 1,
+      "error_message": null
+    },
     {
       "id": 419,
       "run_at": "2026-04-05 20:53:55",
@@ -4553,18 +4716,90 @@ const DATA = {
       "records_found": 20,
       "success": 1,
       "error_message": null
-    },
-    {
-      "id": 400,
-      "run_at": "2026-04-04 20:32:19",
-      "task_type": "daily_monitor",
-      "target_date": "2026-04-04",
-      "records_found": 20,
-      "success": 1,
-      "error_message": null
     }
   ],
   "booking_events": [
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 18,
+      "therapist_name": "高柳",
+      "schedule_date": "2026-04-05",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 172,
+      "therapist_name": "川村",
+      "schedule_date": "2026-04-05",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 85,
+      "therapist_name": "夏川",
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 60,
+      "therapist_name": "花山",
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 141,
+      "therapist_name": "綾野",
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 196,
+      "therapist_name": "加賀美",
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 4,
+      "therapist_name": "高橋",
+      "schedule_date": "2026-04-05",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 129,
+      "therapist_name": "真琴",
+      "schedule_date": "2026-04-05",
+      "location": "蕨ルーム",
+      "start_time": null,
+      "end_time": null
+    },
+    {
+      "checked_at": "2026-04-05 22:04:06",
+      "therapist_id": 81,
+      "therapist_name": "新川",
+      "schedule_date": "2026-04-05",
+      "location": "赤羽ルーム",
+      "start_time": null,
+      "end_time": null
+    },
     {
       "checked_at": "2026-04-05 20:53:55",
       "therapist_id": 18,
@@ -5379,87 +5614,6 @@ const DATA = {
       "checked_at": "2026-04-05 03:47:53",
       "therapist_id": 13,
       "therapist_name": "水無瀬",
-      "schedule_date": "2026-04-05",
-      "location": "蕨ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 03:47:53",
-      "therapist_id": 85,
-      "therapist_name": "夏川",
-      "schedule_date": "2026-04-05",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 03:47:53",
-      "therapist_id": 153,
-      "therapist_name": "樋ノ水",
-      "schedule_date": "2026-04-05",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 03:47:53",
-      "therapist_id": 195,
-      "therapist_name": "葉月",
-      "schedule_date": "2026-04-05",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 03:47:53",
-      "therapist_id": 141,
-      "therapist_name": "綾野",
-      "schedule_date": "2026-04-05",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 03:47:53",
-      "therapist_id": 100,
-      "therapist_name": "三上",
-      "schedule_date": "2026-04-05",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 03:47:53",
-      "therapist_id": 48,
-      "therapist_name": "水原",
-      "schedule_date": "2026-04-05",
-      "location": "蕨ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 03:47:53",
-      "therapist_id": 199,
-      "therapist_name": "七里",
-      "schedule_date": "2026-04-05",
-      "location": "蕨ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 03:47:53",
-      "therapist_id": 111,
-      "therapist_name": "岩崎",
-      "schedule_date": "2026-04-05",
-      "location": "赤羽ルーム",
-      "start_time": null,
-      "end_time": null
-    },
-    {
-      "checked_at": "2026-04-05 02:34:19",
-      "therapist_id": 182,
-      "therapist_name": "三葉",
       "schedule_date": "2026-04-05",
       "location": "蕨ルーム",
       "start_time": null,
@@ -11282,8 +11436,8 @@ const DATA = {
       "therapist_name": "高橋",
       "tags": "[\"３０代オトナ女子\", \"他店様人気セラピスト\", \"衝撃走る”Fカップ”\", \"攻めすぎ注意報発令\"]",
       "hour_utc": 22,
-      "total_checks": 2,
-      "booked_checks": 2,
+      "total_checks": 3,
+      "booked_checks": 3,
       "hour_jst": 7
     },
     {
@@ -12074,8 +12228,8 @@ const DATA = {
       "therapist_name": "高柳",
       "tags": "[\"３０代オトナ女子\", \"完！全！に虜に\", \"圧倒的リピート率\", \"ウルトラGカップ\", \"事前予約必須\"]",
       "hour_utc": 22,
-      "total_checks": 1,
-      "booked_checks": 1,
+      "total_checks": 2,
+      "booked_checks": 2,
       "hour_jst": 7
     },
     {
@@ -13010,8 +13164,8 @@ const DATA = {
       "therapist_name": "花山",
       "tags": "[\"３０代オトナ女子\", \"美脚♡美人\", \"人一倍強い癒し\", \"甘く攻める小悪魔な指先\"]",
       "hour_utc": 22,
-      "total_checks": 2,
-      "booked_checks": 2,
+      "total_checks": 3,
+      "booked_checks": 3,
       "hour_jst": 7
     },
     {
@@ -13181,7 +13335,7 @@ const DATA = {
       "therapist_name": "愛沢",
       "tags": "[\"３０代オトナ女子\", \"圧倒的♡施術\", \"フェロモンダダ漏れ\"]",
       "hour_utc": 22,
-      "total_checks": 2,
+      "total_checks": 3,
       "booked_checks": 1,
       "hour_jst": 7
     },
@@ -13622,8 +13776,8 @@ const DATA = {
       "therapist_name": "新川",
       "tags": "[\"超要注目セラピ\", \"20代オトナ女子\", \"マッサージもお上手♡\", \"繊細かつ可憐な姿\"]",
       "hour_utc": 22,
-      "total_checks": 3,
-      "booked_checks": 1,
+      "total_checks": 4,
+      "booked_checks": 2,
       "hour_jst": 7
     },
     {
@@ -13784,8 +13938,8 @@ const DATA = {
       "therapist_name": "夏川",
       "tags": "[\"３０代オトナ女子\", \"飾らず気取らない\", \"芸術的なボディライン\", \"センスの良さが光る\", \"おもてなし力♡\"]",
       "hour_utc": 22,
-      "total_checks": 1,
-      "booked_checks": 1,
+      "total_checks": 2,
+      "booked_checks": 2,
       "hour_jst": 7
     },
     {
@@ -14845,6 +14999,15 @@ const DATA = {
       "therapist_id": 129,
       "therapist_name": "真琴",
       "tags": "[\"３０代オトナ女子\", \"真心たーっぷり\", \"均整取れた美しさ\", \"男のロマン♪\"]",
+      "hour_utc": 22,
+      "total_checks": 1,
+      "booked_checks": 1,
+      "hour_jst": 7
+    },
+    {
+      "therapist_id": 129,
+      "therapist_name": "真琴",
+      "tags": "[\"３０代オトナ女子\", \"真心たーっぷり\", \"均整取れた美しさ\", \"男のロマン♪\"]",
       "hour_utc": 23,
       "total_checks": 1,
       "booked_checks": 1,
@@ -14999,7 +15162,7 @@ const DATA = {
       "therapist_name": "高宮",
       "tags": "[\"４０代オトナ女子\", \"美しきビーナス\", \"女優フェイス\"]",
       "hour_utc": 22,
-      "total_checks": 2,
+      "total_checks": 3,
       "booked_checks": 0,
       "hour_jst": 7
     },
@@ -15287,8 +15450,8 @@ const DATA = {
       "therapist_name": "綾野",
       "tags": "[\"３０代オトナ女子\", \"見惚れる美貌\", \"正統派美人\", \"美しきボディライン♡\"]",
       "hour_utc": 22,
-      "total_checks": 1,
-      "booked_checks": 1,
+      "total_checks": 2,
+      "booked_checks": 2,
       "hour_jst": 7
     },
     {
@@ -16754,8 +16917,8 @@ const DATA = {
       "therapist_name": "川村",
       "tags": "[\"３０代オトナ女子\", \"ギャップ施術に翻弄♡\", \"女性らしい曲線美\", \"萌えあがるマブイ淑女\"]",
       "hour_utc": 22,
-      "total_checks": 2,
-      "booked_checks": 0,
+      "total_checks": 3,
+      "booked_checks": 1,
       "hour_jst": 7
     },
     {
@@ -17033,7 +17196,7 @@ const DATA = {
       "therapist_name": "比嘉",
       "tags": "[\"屈指のない笑顔\", \"しっとり優しい系\", \"包み込む優しさ\"]",
       "hour_utc": 22,
-      "total_checks": 1,
+      "total_checks": 2,
       "booked_checks": 1,
       "hour_jst": 7
     },
@@ -18311,8 +18474,8 @@ const DATA = {
       "therapist_name": "加賀美",
       "tags": "[\"３０代オトナ女子\", \"夢中にさせちゃうぞ♡\", \"癒しクイーン\"]",
       "hour_utc": 22,
-      "total_checks": 1,
-      "booked_checks": 1,
+      "total_checks": 2,
+      "booked_checks": 2,
       "hour_jst": 7
     },
     {
@@ -18968,7 +19131,7 @@ const DATA = {
       "therapist_name": "ご新規割",
       "tags": "[\"使用条件はコメント参照\"]",
       "hour_utc": 22,
-      "total_checks": 3,
+      "total_checks": 4,
       "booked_checks": 0,
       "hour_jst": 7
     },
@@ -19139,7 +19302,7 @@ const DATA = {
       "therapist_name": "増設割",
       "tags": "[]",
       "hour_utc": 22,
-      "total_checks": 3,
+      "total_checks": 4,
       "booked_checks": 0,
       "hour_jst": 7
     },
