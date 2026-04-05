@@ -304,8 +304,8 @@ document.getElementById('genAt').textContent='更新: '+DATA.generated_at.replac
   });
 
   // shift_ended の人を除外して active/ended に分ける
-  const activeRec=rec.filter(r=>lastStatusMap[r.therapist_id]!=='shift_ended');
-  const endedRec =rec.filter(r=>lastStatusMap[r.therapist_id]==='shift_ended');
+  const activeRec=rec.filter(r=>lastStatus[r.therapist_id]!=='shift_ended');
+  const endedRec =rec.filter(r=>lastStatus[r.therapist_id]==='shift_ended');
 
   // メトリクスは active のみでカウント
   const actTotal=activeRec.length,actBkd=activeRec.filter(s=>s.is_fully_booked).length;
